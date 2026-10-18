@@ -63,7 +63,7 @@ test('task names lead Today, project rows and search', async ({ page }) => {
   await task.getByRole('button', { name: 'Add task', exact: true }).click();
   await expect(page.locator('.ws-task-title').first().locator('strong')).toHaveText('Prepare fixture report');
   await nav.getByRole('button', { name: 'Projects', exact: true }).click();
-  await page.locator('.ws-project-overview').getByRole('button', { name: /Inbox/ }).click();
+  await page.locator('.projects-home').getByRole('button', { name: 'Open Inbox', exact: true }).click();
   await page.getByRole('tab', { name: 'All tasks', exact: true }).click();
   await expect(page.getByRole('textbox', { name: 'Row title', exact: true })).toHaveValue('Prepare fixture report');
   await page.locator('.ws-detail-back').click();

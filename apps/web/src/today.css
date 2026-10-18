@@ -1,16 +1,4 @@
 .ws-task-today { max-width:var(--content-width); padding:var(--pane-padding); display:flex; flex-direction:column; gap:var(--space-8); }
-.ws-task-today .ws-schedule { display:flex; align-items:center; height:64px; min-height:64px; padding:8px 16px; margin:0; border:1px solid var(--line); border-radius:var(--radius-pill); background:var(--black); color:var(--white); gap:24px; }
-.ws-schedule-label { display:flex; gap:12px; flex:none; align-items:center; font-size: var(--text-footnote); }
-.ws-schedule-label small { display:block; color:var(--schedule-secondary); font-variant-numeric:tabular-nums; }
-.ws-task-today .ws-schedule-track { position:relative; height:48px; min-width:0; flex:1; overflow:hidden; border-radius:var(--radius-pill); background:color-mix(in srgb,var(--now-fill) 12%,var(--black)); }
-.ws-schedule-ticks { display:flex; justify-content:space-around; font-size: var(--text-caption); color:var(--schedule-secondary); position:absolute; inset:0; align-items:flex-end; padding-bottom:2px; }
-.ws-task-today .ws-schedule-segment { position:absolute; height:44px; top:0; padding:8px; border-radius:var(--radius-pill); color:var(--white); background:color-mix(in srgb,var(--white) 14%,var(--black)); overflow:hidden; font-size:12px; white-space:nowrap; text-overflow:ellipsis; }
-.ws-schedule-segment.now { background:var(--now-fill); color:var(--on-now); }
-.ws-now-marker { position:absolute; inset-block:6px; width:2px; background:var(--now-fill); pointer-events:none; }
-.ws-now-marker small { white-space:nowrap; width:max-content; position:absolute; inset:auto auto -4px -10px; color:var(--on-now); background:var(--now-fill); border-radius:var(--radius-pill); padding:1px 4px; font-size:10px; }
-.ws-schedule .ws-icon { color:var(--white); flex:none; }
-.ws-no-events { position:absolute; inset:8px 16px; font-size:13px; color:var(--white); }
-.ws-schedule-phone { display:none; }
 .ws-task-today .ws-today-hero { display:flex; align-items:center; gap:24px; margin:0; }
 .ws-task-today .ws-today-hero h1 { font-size:var(--text-large); font-weight:650; }
 .ws-task-today .ws-today-stats { margin-left:auto; display:flex; gap:32px; }
@@ -59,9 +47,6 @@
 @container workspace (width < 600px) {
   .ws-task-today { padding:16px; gap:24px; }
   .ws-task-grid { grid-template-columns:1fr; }
-  .ws-task-today .ws-schedule { height:56px; min-height:56px; padding:6px 8px 6px 16px; gap:8px; }
-  .ws-task-today .ws-schedule-track, .ws-task-today .ws-schedule-label { display:none; }
-  .ws-schedule-phone { display:block; min-width:0; flex:1; font-size:12px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
   .ws-task-today .ws-today-hero h1 { font-size:40px; }
   .ws-task-today .ws-today-stats { width:100%; gap:16px; order:3; }
   .ws-task-today .ws-today-stats strong { font-size:32px; }
@@ -92,11 +77,6 @@
  .ws-app .ws-task-card .ws-task-title:hover,.ws-app .ws-task-card .ws-task-check:hover { background:transparent; }
 }
 
-.ws-task-today .ws-schedule { background:var(--surface); color:var(--text); border:var(--hairline) solid var(--line); border-radius:var(--radius-group); }
-.ws-task-today .ws-schedule-track { background:var(--surface-inset); }
-.ws-task-today .ws-schedule-segment { background:var(--chip); color:var(--text); }
-.ws-task-today .ws-schedule-segment.now { background:var(--now-fill); color:var(--on-now); }
-.ws-schedule .ws-icon,.ws-no-events { color:var(--secondary); }
 @media (hover:hover) {
  .ws-app .ws-filter-chips .pressable:hover { background:var(--chip); box-shadow:inset 0 0 0 var(--hairline) var(--line); }
  .ws-app .ws-filter-chips .pressable[aria-pressed='true']:hover { background:var(--ink); }

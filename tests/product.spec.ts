@@ -272,6 +272,7 @@ test("all modules and settings are accessible in both themes without page overfl
       .first()
       .click();
     await expect(page.getByRole("dialog", { name: "Settings" })).toBeVisible();
+    await page.getByRole("button", { name: "Import & export", exact: true }).click();
     await page.getByRole("button", { name: "Export ZIP" }).waitFor();
     await expect(page.getByRole("dialog", { name: "Settings", exact: true })).toHaveCSS("opacity", "1");
     const result = await new AxeBuilder({ page })
@@ -286,6 +287,6 @@ test("all modules and settings are accessible in both themes without page overfl
         })),
       ),
     ).toEqual([]);
-    await page.keyboard.press("Escape");
+    await page.getByRole("button", { name: "Close Settings", exact: true }).click();
   }
 });
