@@ -27,6 +27,7 @@ export default function ImportExportPanel({
       onError(String(error));
     } finally {
       setBusy(false);
+      if (input.current) input.current.value = "";
     }
   };
   const download = (name: string, data: Uint8Array | string, type: string) => {
@@ -41,6 +42,10 @@ export default function ImportExportPanel({
   return (
     <div>
       <div className="ws-settings-actions">
+        <Pressable className="ws-button ws-tinted" disabled={busy} onClick={() => void run(async () => {
+          download("kimpor-workspace.json", await store.exportData(), "application/json");
+          onNotify("Workspace exported");
+        })}>Export JSON</Pressable>
         <Pressable
           className="ws-button ws-tinted"
           disabled={busy}
@@ -69,13 +74,15 @@ export default function ImportExportPanel({
         ref={input}
         className="ws-sr-only"
         type="file"
-        accept=".md,.markdown,.csv,.zip"
+        accept=".json,.md,.markdown,.csv,.zip"
         aria-label="Import portable files"
         onChange={(event) => {
           const file = event.target.files?.[0];
           if (!file) return;
           void run(async () => {
-            if (/\.zip$/i.test(file.name))
+            if (/\.json$/i.test(file.name))
+              await store.importData(await file.text());
+            else if (/\.zip$/i.test(file.name))
               await importWorkspaceZip(
                 store,
                 new Uint8Array(await file.arrayBuffer()),
@@ -97,6 +104,7 @@ export default function ImportExportPanel({
           });
         }}
       />
+      <p className="settings-help">Import JSON, Markdown, CSV or a workspace ZIP. Keep a full ZIP backup somewhere safe; it includes your attachments.</p>
       <label className="ws-field-label">
         Export page
         <select

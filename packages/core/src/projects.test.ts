@@ -29,8 +29,10 @@ it("completes a weekly task and creates the next week without losing its extra f
     const definition = projectDefinition(project, "weekly");
     const task = await store.createPage("row", "Update report", { databaseId: project.id, parentId: project.id,
       properties: { due: "2026-10-12", week: 42, completed: false, __weekly: true, extra: "Preserve" } });
+    await store.patchPageProperties(task.id,{extra:"Updated while task card was open"});
     await completeProjectTask(store, task, definition);
     expect(taskDone(store.listPages().find(page => page.id === task.id)!, definition)).toBe(true);
+    expect(store.listPages().find(page => page.id === task.id)?.properties.extra).toBe("Updated while task card was open");
     const next = store.listPages().find(page => page.type === "row" && page.id !== task.id)!;
     expect(next).toMatchObject({ title: "Update report", databaseId: project.id, properties: { due: "2026-10-19", week: 43, completed: false, extra: "Preserve" } });
     const plain = await store.createPage("row", "Build", { properties: { status: "Building" } });

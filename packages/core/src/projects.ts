@@ -28,6 +28,7 @@ export function projectPreset(type: unknown): ProjectPreset | undefined {
   return projectPresets.find(preset => preset.type === type);
 }
 export function projectType(page: Page | undefined, mapping: ProjectTypes): ProjectType | undefined {
+  if (page?.properties.__workspaceDatabase) return undefined;
   return projectPreset(page && (mapping[page.id] ?? page.properties.__projectType))?.type;
 }
 export function inferProjectTypes(pages: Page[], databases: DatabaseDefinition[]): ProjectTypes {
@@ -37,7 +38,7 @@ export function inferProjectTypes(pages: Page[], databases: DatabaseDefinition[]
     /course|math|stat|assignment|homework/i.test(text) ? "coursework" :
     /predict|football|matchday|recalibr|world.?cup/i.test(text) ? "model" :
     /tracker|workspace|\bapp\b|deploy|build|code|drive/i.test(text) ? "app" : undefined;
-  return Object.fromEntries(databases.map(database => {
+  return Object.fromEntries(databases.filter(database => !pages.find(page => page.id === database.id)?.properties.__workspaceDatabase).map(database => {
     const page = pages.find(page => page.id === database.id);
     const counts = new Map<ProjectType, number>();
     for (const row of pages.filter(page => page.databaseId === database.id && page.type === "row")) {
@@ -100,12 +101,12 @@ export function projectViews(definition: DatabaseDefinition, type?: ProjectType)
   return [...views, { id: `presentation:${type}`, name: preset.view[0]!.toUpperCase() + preset.view.slice(1), type: preset.view,
     groupBy: preset.group, sort: date ? [{ property: date.id, direction: "asc" }] : undefined }];
 }
-export async function completeProjectTask(workspace: Pick<WorkspaceStore, "patchPage" | "createPage">, task: Page, definition?: DatabaseDefinition) {
+export async function completeProjectTask(workspace: Pick<WorkspaceStore, "patchPageProperties" | "createPage">, task: Page, definition?: DatabaseDefinition) {
   const checkbox = definition?.properties.find(property => property.type === "checkbox" && /done|complete|finish/i.test(property.name));
   const status = definition?.properties.find(property => property.type === "status");
-  await workspace.patchPage(task.id, { properties: { ...task.properties,
+  await workspace.patchPageProperties(task.id, {
     ...(checkbox ? { [checkbox.id]: true } : { completed: true }),
-    ...(status ? { [status.id]: status.options?.find(value => /^(done|shipped|complete|completed)$/i.test(value)) ?? "Done" } : {}) } });
+    ...(status ? { [status.id]: status.options?.find(value => /^(done|shipped|complete|completed)$/i.test(value)) ?? "Done" } : {}) });
   if (!task.properties.__weekly) return;
   const due = taskDue(task, definition) ?? new Date().toISOString().slice(0,10);
   const next = new Date(`${due.slice(0,10)}T12:00:00`); next.setDate(next.getDate() + 7);

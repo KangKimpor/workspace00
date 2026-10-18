@@ -523,18 +523,11 @@
 
 .ws-board-card strong { font-size:var(--text-headline); font-weight:600; }
 
-/* Lime workspace: clear task names, soft cards and a single schedule rail. */
 .ws-topbar { background:var(--bg); border-bottom:0; }
 .ws-sidebar { border-right:0; }
 .ws-button { border-radius:var(--radius-pill); }
 .ws-nav.selected { background:var(--ink); color:var(--on-ink); box-shadow:none; }
-.ws-brand .logo { background:var(--black); color:var(--now-fill); }
-.ws-schedule { display:flex; width:100%; align-items:center; gap:var(--space-4); padding:var(--space-2); background:var(--schedule); color:var(--on-schedule); border-radius:var(--radius-pill); margin-bottom:var(--space-8); text-align:left; }
-.ws-schedule-label { display:flex; align-items:center; gap:var(--space-3); padding-inline:var(--space-4); white-space:nowrap; }
-.ws-schedule-track { display:flex; flex:1; gap:var(--space-4); align-items:center; background:var(--accent-fill); color:var(--on-accent); border-radius:var(--radius-pill); padding:var(--space-3) var(--space-5); min-width:0; }
-.ws-schedule-event { display:flex; flex:1; gap:var(--space-3); align-items:center; min-width:0; font-size:var(--text-footnote); }
-.ws-schedule-event time { white-space:nowrap; }
-.ws-schedule-event strong { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:500; }
+.ws-brand .logo { background:var(--black); color:var(--white); }
 .ws-today-hero { display:flex; align-items:center; gap:var(--space-8); margin-bottom:var(--space-8); }
 .ws-today-hero h1 { font-weight:500; letter-spacing:var(--tracking-tight); }
 .ws-today-hero > .ws-button { margin-left:auto; }
@@ -551,20 +544,12 @@
 .ws-agenda-card small,.ws-agenda-card .ws-quiet-empty { color:var(--schedule-secondary); }
 .ws-agenda-card .ws-button { background:var(--accent-fill); color:var(--on-accent); }
 .ws-agenda-row .ws-event-dot { flex:0 0 var(--space-2); height:var(--space-2); background:var(--accent-fill); border-radius:var(--radius-pill); }
-.ws-app .ws-schedule:hover { background:var(--schedule); }
 @container workspace (width < 1024px) {
  .ws-today-hero { flex-wrap:wrap; gap:var(--space-4); }
  .ws-today-stats { order:3; width:100%; gap:var(--space-6); }
  .ws-task-today .ws-today-grid { grid-template-columns:1fr; }
- .ws-schedule-event:nth-child(n+2) { display:none; }
 }
 @container workspace (width < 600px) {
- .ws-schedule { gap:var(--space-2); padding:var(--space-2); border-radius:var(--radius-card); margin-bottom:var(--space-6); }
- .ws-schedule-label { padding-inline:var(--space-1); font-size:var(--text-caption); }
- .ws-schedule-label svg { display:none; }
- .ws-schedule-track { padding:var(--space-3); }
- .ws-schedule-event { display:block; font-size:var(--text-caption); }
- .ws-schedule-event strong { display:block; }
  .ws-today-stats { justify-content:space-between; gap:var(--space-2); }
  .ws-today-stats > span { flex-direction:column; gap:0; }
  .ws-today-tasks,.ws-agenda-card { padding:var(--space-4); }

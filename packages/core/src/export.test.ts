@@ -54,6 +54,20 @@ it("round-trips supported multilingual Markdown, inline formats and ordered and 
     expect(roundTrip).toContain(text);
   expect(documentToMarkdown(markdownToDocument(""))).toBe("\n");
 });
+it("imports heading levels and task states as typed editor attributes", () => {
+  const document = new Y.Doc();
+  Y.applyUpdate(document,markdownToDocument("## Goal\n\n- [ ] Define scope\n- [x] Done"));
+  const blocks = document.getXmlFragment("default").toArray() as Y.XmlElement[];
+  expect(blocks[0]?.getAttributes()).toMatchObject({level:2});
+  const tasks = blocks.find(block => block.nodeName === "taskList")!.toArray() as Y.XmlElement[];
+  expect(tasks[0]?.getAttributes()).toMatchObject({checked:false});
+  expect(tasks[1]?.getAttributes()).toMatchObject({checked:true});
+  expect(documentToMarkdown(Y.encodeStateAsUpdate(document))).toContain("- [ ] Define scope");
+  // Existing documents may retain the string attribute written by earlier versions.
+  tasks[1]!.setAttribute("checked","true");
+  expect(documentToMarkdown(Y.encodeStateAsUpdate(document))).toContain("- [x] Done");
+  document.destroy();
+});
 it("exports rich blocks, safe media, mentions and tables without executable links", () => {
   const doc = new Y.Doc(),
     root = doc.getXmlFragment("default");

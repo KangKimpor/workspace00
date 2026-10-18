@@ -30,7 +30,8 @@ export async function enablePush(): Promise<string> {
   const permission = await Notification.requestPermission();
   if (permission !== "granted")
     throw new Error("Notification permission was not granted.");
-  const registration = await navigator.serviceWorker.ready;
+  const registration = await navigator.serviceWorker.getRegistration();
+  if (!registration?.active) throw new Error("Background notifications need the installed app's active service worker. Install the app, then reopen it.");
   const subscription =
     (await registration.pushManager.getSubscription()) ??
     (await registration.pushManager.subscribe({
@@ -50,7 +51,8 @@ export async function enablePush(): Promise<string> {
 }
 export async function disablePush(): Promise<void> {
   if (!("serviceWorker" in navigator) || !("PushManager" in window)) return;
-  const registration = await navigator.serviceWorker.ready;
+  const registration = await navigator.serviceWorker.getRegistration();
+  if (!registration) return;
   const subscription = await registration.pushManager.getSubscription();
   if (!subscription) return;
   const { cloudRequest } = await import("@veloradesk/core/cloud");
@@ -59,6 +61,22 @@ export async function disablePush(): Promise<void> {
     endpoint: subscription.endpoint,
   });
   await subscription.unsubscribe();
+}
+export interface PushState { enabled: boolean; available: boolean; message: string }
+export async function getPushState(): Promise<PushState> {
+  if (!("serviceWorker" in navigator) || !("PushManager" in window) || !("Notification" in window))
+    return { enabled: false, available: false, message: "This browser does not support background notifications. On iPhone or iPad, install to the Home Screen first." };
+  if (Notification.permission === "denied") return { enabled: false, available: false, message: "Permission denied. Allow notifications in your browser or device settings, then return here." };
+  const configured = !!import.meta.env.VITE_VAPID_PUBLIC_KEY;
+  const unconfigured: PushState = { enabled: false, available: false, message: "Background reminders are not configured in this build. In-app reminders work while the workspace is open." };
+  if (Notification.permission !== "granted" && !configured) return unconfigured;
+  const registration = await navigator.serviceWorker.getRegistration();
+  const subscription = await registration?.pushManager.getSubscription();
+  const enabled = Notification.permission === "granted" && !!subscription;
+  if (enabled) return { enabled, available: true, message: "Permission granted. Background notifications are on." };
+  if (!configured) return unconfigured;
+  if (!registration?.active) return { enabled: false, available: false, message: "Install the app and reopen it to enable background notifications. On iOS, use Share → Add to Home Screen." };
+  return { enabled: false, available: true, message: Notification.permission === "granted" ? "Permission granted. Background notifications are off." : "Your browser will ask for permission when you turn notifications on." };
 }
 /** The foreground scheduler makes no promise of reminders while an offline web app is closed. */
 export function startReminders(

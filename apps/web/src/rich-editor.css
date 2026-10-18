@@ -17,7 +17,7 @@
 .rich-color { display: inline-flex; align-items: center; gap:var(--space-1); min-height: var(--target); }
 .rich-color select { color: var(--text); background: var(--field); border: 0; border-radius:var(--radius-control); max-width: 112px; min-height: var(--target); }
 .rich-document-wrap { position: relative; padding-left:var(--space-12); min-width: 0; }
-.rich-document { min-height: 240px; padding:var(--space-6) 0; max-width: var(--reading-width); font-size: var(--text-headline); line-height: 1.65; outline: none; overflow-wrap: anywhere; color: var(--text); }
+.rich-document { min-height: 240px; padding:var(--space-6) 0; max-width: var(--reading-width); font-size: var(--text-body); line-height: 1.65; outline: none; overflow-wrap: anywhere; color: var(--text); }
 .rich-document > :first-child { margin-top:0; }
 .rich-document h1 { font-size: var(--text-large); }.rich-document h2 { font-size: var(--text-title); }.rich-document h3 { font-size: var(--text-title3); }
 .rich-document p { margin:var(--space-2) 0 var(--space-4); }.rich-document ul, .rich-document ol { padding-inline-start:var(--space-6); }

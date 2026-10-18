@@ -27,7 +27,7 @@ test('Warm light is the default, with saved dark and system themes preserved', a
   await page.goto('/');
   await expect(page.getByRole('heading', { name: 'Today', exact: true })).toBeVisible();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
-  await expect(page.locator('.ws-app')).toHaveCSS('background-color', 'rgb(246, 245, 242)');
+  await expect(page.locator('.ws-app')).toHaveCSS('background-color', 'rgb(255, 255, 255)');
   await page.goto('/design');
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
@@ -176,7 +176,7 @@ test('saved dark appearance keeps heading contrast in portrait and landscape lay
     // Full-page capture caused WebKit to lose inherited colors during layout.
     await page.screenshot({ fullPage: true });
     const colors = await page.locator('h1,h2,h3,.brand strong').evaluateAll(elements => elements.map(element => getComputedStyle(element).color));
-    expect([...new Set(colors)]).toEqual(['rgb(240, 242, 235)']);
+    expect([...new Set(colors)]).toEqual(['rgb(230, 230, 230)']);
   }
 });
 

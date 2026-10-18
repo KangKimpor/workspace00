@@ -129,7 +129,7 @@ test("redesign geometry, targets, safe areas and accessibility", async ({ page }
   }
   await navigate("Projects");
   await audit("projects-overview");
-  await page.locator('.ws-project-overview').getByRole("button",{name:/Inbox/}).click();
+  await page.locator('.projects-home').getByRole("button",{name:'Open Inbox',exact:true}).click();
   await expect(page.getByRole("textbox",{name:"Row title",exact:true})).toBeVisible();
   await audit("project-table");
   await page.getByRole('tab',{name:'By status',exact:true}).click(); await audit('project-board');
@@ -148,6 +148,7 @@ test("redesign geometry, targets, safe areas and accessibility", async ({ page }
   await page.getByRole("button",{name:"Trash",exact:true}).click();await audit("trash");
   await page.getByRole("button",{name:"Close Trash",exact:true}).click();
   await page.getByRole("button",{name:"Settings",exact:true}).click();
+  await page.getByRole("button",{name:"Import & export",exact:true}).click();
   await page.getByRole("button",{name:"Export ZIP"}).waitFor();await audit("settings");
   await page.getByRole('button',{name:'Close Settings',exact:true}).click();
   await page.route('https://auth.example.test/**',route=>route.fulfill({contentType:'application/json',body:'{}'}));

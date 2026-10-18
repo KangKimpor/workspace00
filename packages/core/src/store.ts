@@ -6,13 +6,14 @@ import type {
   Calendar,
   CalendarEvent,
   DatabaseDefinition,
+  DatabaseView,
   EntityTable,
   Page,
   PageType,
   PageVersion,
   WorkspaceEntity,
 } from "./model";
-import type { EncryptedEnvelope } from "./crypto";
+import { decryptAttachment, encryptAttachment, type EncryptedEnvelope } from "./crypto";
 import type { SyncTransport } from "./sync";
 
 export interface StampedValue {
@@ -144,7 +145,7 @@ function equalBytes(a: Uint8Array, b: Uint8Array): boolean {
 function recordEntity(record: EntityRecord): WorkspaceEntity {
   const entity = Object.fromEntries(
     Object.entries(record.fields)
-      .filter(([name]) => !name.startsWith("properties."))
+      .filter(([name]) => !name.startsWith("properties.") && !name.startsWith("views."))
       .map(([name, field]) => [name, field.value]),
   );
   if (record.table === "pages") {
@@ -155,6 +156,34 @@ function recordEntity(record: EntityRecord): WorkspaceEntity {
       if (name.startsWith("properties."))
         properties[name.slice(11)] = field.value;
     entity.properties = properties;
+  }
+  if (record.table === "databases") {
+    const views = new Map<string, Record<string, unknown>>(
+      (Array.isArray(entity.views) ? entity.views : []).map(view => [view.id, { ...view }]),
+    );
+    const baseClock = record.fields.views?.clock;
+    const updates = new Map<string, Record<string, StampedValue>>();
+    for (const [name, field] of Object.entries(record.fields)) {
+      if (!name.startsWith("views.") || (baseClock && compareClock(field.clock, baseClock) < 0)) continue;
+      const [, encodedId, attribute] = name.split(".");
+      if (!encodedId || !attribute) continue;
+      const id = decodeURIComponent(encodedId);
+      const attributes = updates.get(id) ?? {};
+      attributes[attribute] = field;
+      updates.set(id,attributes);
+    }
+    for (const [id, attributes] of updates) {
+      // A concurrent edit cannot revive a deleted view; recreation writes deleted:false.
+      if (attributes.deleted?.value === true) { views.delete(id); continue; }
+      const view = views.get(id) ?? { id };
+      for (const [attribute,field] of Object.entries(attributes)) {
+        if (attribute === "deleted") continue;
+        if (field.value === null) delete view[attribute];
+        else view[attribute] = field.value;
+      }
+      views.set(id, view);
+    }
+    entity.views = [...views.values()];
   }
   // Detach the complete result once. Cloning every primitive field separately
   // makes refreshing a large workspace block input without improving isolation.
@@ -177,6 +206,27 @@ function writeFields(
   if (!previous && !create) throw new Error("Item no longer exists");
   const fields: Record<string, StampedValue> = {};
   const normalized = { ...values };
+  if (table === "pages" && recordProperties(previous).__locked && "properties.__text" in normalized)
+    throw new Error("Unlock this page before changing its searchable text");
+  if (table === "databases" && Array.isArray(normalized.views)) {
+    const oldViews = previous ? (recordEntity(previous) as DatabaseDefinition).views : [];
+    const nextViews = normalized.views as DatabaseView[];
+    delete normalized.views;
+    if (!previous) normalized.views = nextViews;
+    for (const id of new Set([...oldViews.map(view => view.id), ...nextViews.map(view => view.id)])) {
+      const view = nextViews.find(view => view.id === id);
+      const before = oldViews.find(view => view.id === id);
+      const prefix = `views.${encodeURIComponent(id).replaceAll(".", "%2E")}.`;
+      if (!view) normalized[`${prefix}deleted`] = true;
+      else {
+        normalized[`${prefix}deleted`] = false;
+        for (const key of new Set([...Object.keys(before ?? {}), ...Object.keys(view)])) {
+          if (key !== "id" && JSON.stringify(before?.[key as keyof DatabaseView]) !== JSON.stringify(view[key as keyof DatabaseView]))
+            normalized[`${prefix}${key}`] = view[key as keyof DatabaseView] ?? null;
+        }
+      }
+    }
+  }
   if (table === "pages" && isRecord(normalized.properties)) {
     const oldProperties = recordProperties(previous);
     const nextProperties = { ...normalized.properties };
@@ -245,12 +295,55 @@ function documentVersion(
 function isRecord(value: unknown): value is Record<string, unknown> {
   return value !== null && typeof value === "object" && !Array.isArray(value);
 }
+const VIEW_ATTRIBUTES = new Set(["name", "type", "filter", "sort", "groupBy", "visibleProperties", "deleted"]);
+function validPropertyValue(value: unknown): boolean {
+  return value === null || typeof value === "string" || typeof value === "boolean" ||
+    (typeof value === "number" && Number.isFinite(value)) ||
+    (Array.isArray(value) && value.every(item => typeof item === "string"));
+}
+function validateDatabase(entity: Record<string, unknown>): void {
+  const fail = (): never => { throw new Error("Invalid database definition or property reference"); };
+  if (!Array.isArray(entity.properties) || !Array.isArray(entity.views)) fail();
+  const properties = entity.properties as unknown[];
+  const ids = new Set<string>();
+  const types = new Set(["title", "text", "number", "select", "multi-select", "status", "date", "checkbox", "url", "email", "phone", "person", "files", "relation", "rollup"]);
+  for (const property of properties) {
+    if (!isRecord(property) || typeof property.id !== "string" || !property.id || ids.has(property.id) ||
+      typeof property.name !== "string" || !types.has(String(property.type)) ||
+      (property.options !== undefined && (!Array.isArray(property.options) || property.options.some(item => typeof item !== "string"))) ||
+      (property.relationDatabaseId !== undefined && (typeof property.relationDatabaseId !== "string" || !property.relationDatabaseId))) fail();
+    ids.add((property as Record<string, unknown>).id as string);
+  }
+  const reference = (value: unknown) => typeof value === "string" && ids.has(value);
+  const filter = (value: unknown, depth = 0): boolean => {
+    if (!isRecord(value) || depth > 12) return false;
+    if (Array.isArray(value.children)) return ["and", "or"].includes(String(value.operator)) && value.children.every(child => filter(child, depth + 1));
+    return reference(value.property) && ["contains", "equals", "before", "after", "empty"].includes(String(value.operator)) && validPropertyValue(value.value);
+  };
+  const viewIds = new Set<string>();
+  for (const view of entity.views as unknown[]) {
+    if (!isRecord(view) || typeof view.id !== "string" || !view.id || viewIds.has(view.id) ||
+      typeof view.name !== "string" || !["table", "list", "board", "calendar", "gallery"].includes(String(view.type)) ||
+      (view.groupBy !== undefined && view.groupBy !== "" && !reference(view.groupBy)) ||
+      (view.visibleProperties !== undefined && (!Array.isArray(view.visibleProperties) || !view.visibleProperties.every(reference))) ||
+      (view.sort !== undefined && (!Array.isArray(view.sort) || !view.sort.every(sort => isRecord(sort) && reference(sort.property) && ["asc", "desc"].includes(String(sort.direction))))) ||
+      (view.filter !== undefined && !filter(view.filter))) fail();
+    viewIds.add((view as Record<string, unknown>).id as string);
+  }
+  if (entity.defaultProperties !== undefined && (!isRecord(entity.defaultProperties) ||
+    !Object.entries(entity.defaultProperties).every(([id,value]) => reference(id) && validPropertyValue(value)))) fail();
+}
 function validateFields(
   fields: unknown,
 ): asserts fields is Record<string, StampedValue> {
   if (!isRecord(fields) || Object.keys(fields).length > 100)
     throw new Error("Invalid fields");
   for (const [name, field] of Object.entries(fields)) {
+    if (name.startsWith("views.")) {
+      const parts = name.split(".");
+      if (parts.length !== 3 || !parts[1] || !VIEW_ATTRIBUTES.has(parts[2]!)) throw new Error("Invalid view field");
+      decodeURIComponent(parts[1]);
+    }
     if (
       ["__proto__", "constructor", "prototype"].includes(name) ||
       [
@@ -310,11 +403,7 @@ function validateEntity(
       Date.parse(entity.end) < Date.parse(entity.start))
   )
     throw new Error("Invalid event range");
-  if (
-    table === "databases" &&
-    (!Array.isArray(entity.properties) || !Array.isArray(entity.views))
-  )
-    throw new Error("Invalid database");
+  if (table === "databases") validateDatabase(entity);
 }
 function validateUpdate(update: Uint8Array): void {
   const document = new Y.Doc();
@@ -323,6 +412,62 @@ function validateUpdate(update: Uint8Array): void {
   } finally {
     document.destroy();
   }
+}
+function remapDocumentAttachments(update: Uint8Array, ids: Map<string,string>, encryption: Map<string,{key:string;iv:string}>): Uint8Array {
+  if (!ids.size) return new Uint8Array(update);
+  const document = new Y.Doc();
+  const value = (item: unknown, key = ""): unknown => {
+    if (typeof item === "string") return key === "attachmentId" ? ids.get(item) ?? item :
+      (["src","href"].includes(key) && item.startsWith("attachment:") ? `attachment:${ids.get(item.slice(11)) ?? item.slice(11)}` : item);
+    if (Array.isArray(item)) return item.map(item => value(item,key));
+    if (isRecord(item)) return Object.fromEntries(Object.entries(item).map(([key,item]) => [key,value(item,key)]));
+    return item;
+  };
+  const visit = (node: unknown): void => {
+    if (node instanceof Y.XmlElement) {
+      const encrypted = encryption.get(String(node.getAttribute("attachmentId") ?? ""));
+      for (const [key,item] of Object.entries(node.getAttributes())) node.setAttribute(key,value(item,key) as string);
+      if (encrypted) { node.setAttribute("fileKey",encrypted.key); node.setAttribute("fileIv",encrypted.iv); }
+    }
+    if (node instanceof Y.XmlText) {
+      let offset = 0;
+      for (const delta of node.toDelta()) {
+        const length = typeof delta.insert === "string" ? delta.insert.length : 1;
+        if (delta.attributes) node.format(offset,length,value(delta.attributes) as Record<string,unknown>);
+        offset += length;
+      }
+    }
+    if (node instanceof Y.XmlFragment) node.toArray().forEach(visit);
+  };
+  try {
+    Y.applyUpdate(document,update);
+    // Tiptap stores rich text in XML fragments; get() resolves decoded generic roots.
+    document.transact(() => { for (const name of document.share.keys()) visit(document.getXmlFragment(name)); });
+    return Y.encodeStateAsUpdate(document);
+  } finally { document.destroy(); }
+}
+function attachmentCredentials(documents: Map<string, Uint8Array | null>): Map<string,{key:string;iv:string}> {
+  const credentials = new Map<string,{key:string;iv:string}>();
+  const visit = (node: unknown): void => {
+    if (node instanceof Y.XmlElement) {
+      const id = node.getAttribute("attachmentId"), key = node.getAttribute("fileKey"), iv = node.getAttribute("fileIv");
+      if (id && (key || iv)) {
+        if (!key || !iv) throw new Error("Attachment encryption keys are missing; restore a full backup before duplicating");
+        const previous = credentials.get(id);
+        if (previous && (previous.key !== key || previous.iv !== iv)) throw new Error("Attachment encryption keys conflict; restore a full backup before duplicating");
+        credentials.set(id,{key,iv});
+      }
+    }
+    if (node instanceof Y.XmlFragment) node.toArray().forEach(visit);
+  };
+  for (const update of documents.values()) if (update) {
+    const document = new Y.Doc();
+    try {
+      Y.applyUpdate(document,update);
+      for (const name of document.share.keys()) visit(document.getXmlFragment(name));
+    } finally { document.destroy(); }
+  }
+  return credentials;
 }
 function validateEnvelope(
   envelope: unknown,
@@ -466,10 +611,10 @@ export class WorkspaceStore {
           b.updatedAt.localeCompare(a.updatedAt) || a.id.localeCompare(b.id),
       );
   }
-  listPages(includeTrash = false): Page[] {
+  listPages(includeTrash = false, includeArchived = includeTrash): Page[] {
     const pages = this.list<Page>("pages", true);
-    if (includeTrash) return pages;
-    const hidden = new Set(pages.filter(page => page.deletedAt).map(page => page.id));
+    if (includeTrash && includeArchived) return pages;
+    const hidden = new Set(pages.filter(page => (!includeTrash && page.deletedAt) || (!includeArchived && page.properties.__archived)).map(page => page.id));
     let changed = true;
     while (changed) {
       changed = false;
@@ -520,6 +665,24 @@ export class WorkspaceStore {
         const fields = writeFields(previous, table, entityId, values, create, user, this.clock);
         if (!Object.keys(fields).length) return;
         const merged = { ...previous?.fields, ...fields };
+        if (table === "pages" && (create || "parentId" in values || "databaseId" in values)) {
+          const page = recordEntity({ userId: user, table, id: entityId, fields: merged, schemaVersion: 1 }) as Page;
+          const visited = new Set<string>();
+          // Older imported database roots use their own ID as databaseId.
+          const parents = [page.parentId, page.type === "database" && page.databaseId === page.id ? null : page.databaseId];
+          for (let index = 0; index < parents.length; index++) {
+            const id = parents[index];
+            if (!id || visited.has(id)) continue;
+            if (id === entityId) throw new Error("A page cannot be moved into itself or its descendants");
+            visited.add(id);
+            const record = await this.entities.get([user, "pages", id]);
+            if (!record) throw new Error("Destination page no longer exists");
+            const parent = recordEntity(record) as Page;
+            if (parent.deletedAt || parent.properties.__archived) throw new Error("Restore the destination page first");
+            if (id === page.databaseId && parent.type !== "database") throw new Error("Rows require a database destination");
+            parents.push(parent.parentId, parent.databaseId);
+          }
+        }
         await this.entities.put({
           userId: user,
           table,
@@ -576,6 +739,11 @@ export class WorkspaceStore {
     page.userId = this.user;
     page.id = crypto.randomUUID();
     page.type = type;
+    if (type === "row" && page.databaseId) {
+      const definition = await this.entities.get([this.user, "databases", page.databaseId]);
+      const defaults = definition ? (recordEntity(definition) as DatabaseDefinition).defaultProperties : undefined;
+      page.properties = { ...structuredClone(defaults ?? {}), ...page.properties };
+    }
     const siblings = this.listPages()
       .filter((item) => item.parentId === page.parentId)
       .sort((a, b) => compareOrder(a.properties.__order, b.properties.__order));
@@ -597,11 +765,145 @@ export class WorkspaceStore {
       updatedAt: new Date().toISOString(),
     });
   }
+  /** Patch only supplied keys; editor callbacks must not replace a stale properties snapshot. */
+  async patchPageProperties(id: string, patch: Page["properties"]): Promise<void> {
+    const fields: Record<string,unknown> = {};
+    for (const [key,value] of Object.entries(patch)) {
+      if (!key || ["__proto__","constructor","prototype","__locked"].includes(key) || !validPropertyValue(value)) throw new Error("Invalid page property");
+      fields[`properties.${key}`] = value;
+    }
+    if (!Object.keys(fields).length) return;
+    await this.write("pages",id,{...fields,updatedAt:new Date().toISOString()});
+  }
   async trashPage(id: string): Promise<void> {
     await this.patchPage(id, { deletedAt: new Date().toISOString() });
   }
   async restorePage(id: string): Promise<void> {
     await this.patchPage(id, { deletedAt: null });
+  }
+  async archivePage(id: string): Promise<void> {
+    await this.write("pages", id, { "properties.__archived": new Date().toISOString(), updatedAt: new Date().toISOString() });
+  }
+  async unarchivePage(id: string): Promise<void> {
+    await this.write("pages", id, { "properties.__archived": null, updatedAt: new Date().toISOString() });
+  }
+  async movePage(id: string, parentId: string | null): Promise<void> {
+    const user = this.user;
+    await this.db.transaction("rw", [this.entities, this.outbox, this.meta], async () => {
+      if (user !== this.user) throw new Error("Workspace account changed");
+      const record = await this.entities.get([user, "pages", id]);
+      if (!record) throw new Error("Page no longer exists");
+      const page = recordEntity(record) as Page;
+      if (page.deletedAt) throw new Error("Restore this page before moving it");
+      const destination = parentId ? await this.entities.get([user, "pages", parentId]) : undefined;
+      if (parentId && !destination) throw new Error("Destination page no longer exists");
+      const target = destination ? recordEntity(destination) as Page : undefined;
+      if (page.type === "row" && target?.type !== "database") throw new Error("Rows require a database destination");
+      const isRow = page.type === "row" || (page.type !== "database" && target?.type === "database");
+      if (user !== this.user) throw new Error("Workspace account changed");
+      await this.patchPage(id, { parentId, databaseId: isRow ? parentId : null, ...(isRow ? { type: "row" } : {}) });
+      if (user !== this.user) throw new Error("Workspace account changed");
+    });
+    await this.refresh();
+  }
+  async duplicatePage(id: string, title?: string): Promise<Page> {
+    let result!: Page;
+    const user = this.user;
+    const snapshot = await this.db.transaction("r", [this.entities,this.documents,this.encryptedDocuments,this.attachments],async () => {
+      if (user !== this.user) throw new Error("Workspace account changed");
+      const records = await this.entities.where("userId").equals(user).toArray();
+      const pages = records.filter(record => record.table === "pages").map(record => recordEntity(record) as Page);
+      const root = pages.find(page => page.id === id && !page.deletedAt);
+      if (!root) throw new Error("Page no longer exists");
+      const selected = new Map([[id,root]]);
+      for (const page of selected.values()) for (const child of pages)
+        if (!child.deletedAt && !selected.has(child.id) && (child.parentId === page.id || child.databaseId === page.id)) selected.set(child.id,child);
+      const attachments: Attachment[] = [];
+      const documents = new Map<string,Uint8Array|null>();
+      for (const page of selected.values()) {
+        if (page.properties.__locked || await this.encryptedDocuments.where("[userId+pageId]").equals([user,page.id]).count())
+          throw new Error("Unlock protected pages before duplicating them");
+        attachments.push(...await this.attachments.where("[userId+pageId]").equals([user,page.id]).toArray());
+        documents.set(page.id,(await this.documents.get([user,page.id]))?.update ?? null);
+      }
+      return {records,selected,attachments,documents};
+    });
+    const {records,selected,attachments,documents} = snapshot;
+    const ids = new Map([...selected.keys()].map(key => [key, crypto.randomUUID()]));
+    const attachmentIds = new Map(attachments.map(file => [file.id,crypto.randomUUID()]));
+    const credentials = attachmentCredentials(documents);
+    if ([...credentials.keys()].some(id => !attachmentIds.has(id))) throw new Error("Wait for all attachments to sync before duplicating this page");
+    const encryption = new Map<string,{bytes:Uint8Array;key:string;iv:string}>();
+    for (const file of attachments) {
+      const keys = credentials.get(file.id);
+      if (!keys && file.name === "Encrypted attachment") throw new Error("Attachment encryption keys are missing; restore a full backup before duplicating");
+      if (keys) {
+        const plaintext = await decryptAttachment(file.bytes,keys.key,keys.iv,file.id);
+        try { encryption.set(file.id,await encryptAttachment(plaintext,attachmentIds.get(file.id)!)); }
+        finally { plaintext.fill(0); }
+      }
+    }
+    if (user !== this.user) throw new Error("Workspace account changed");
+    await this.db.transaction("rw", [this.entities, this.documents, this.encryptedDocuments, this.attachments, this.versions, this.outbox, this.meta], async () => {
+      if (user !== this.user) throw new Error("Workspace account changed");
+      const current = await this.entities.where("userId").equals(user).toArray();
+      const relevant = (record: EntityRecord) => selected.has(record.id) && ["pages","databases"].includes(record.table);
+      if (JSON.stringify(current.filter(relevant)) !== JSON.stringify(records.filter(relevant)) || current.some(record => {
+        if (record.table !== "pages" || selected.has(record.id)) return false;
+        const page = recordEntity(record) as Page;
+        return !page.deletedAt && (selected.has(page.parentId ?? "") || selected.has(page.databaseId ?? ""));
+      })) throw new Error("Source pages changed while copying; please try again");
+      for (const page of selected.values()) {
+        if (await this.encryptedDocuments.where("[userId+pageId]").equals([user,page.id]).count()) throw new Error("Source pages changed while copying; please try again");
+        const update = (await this.documents.get([user,page.id]))?.update ?? null;
+        const previous = documents.get(page.id) ?? null;
+        if ((update === null) !== (previous === null) || (update && previous && !equalBytes(update,previous))) throw new Error("Source document changed while copying; please try again");
+        const files = await this.attachments.where("[userId+pageId]").equals([user,page.id]).toArray();
+        const before = attachments.filter(file => file.pageId === page.id);
+        if (files.length !== before.length || files.some(file => {
+          const old = before.find(old => old.id === file.id);
+          return !old || old.name !== file.name || old.mime !== file.mime || !equalBytes(old.bytes,file.bytes);
+        })) throw new Error("Source attachments changed while copying; please try again");
+      }
+      const date = new Date().toISOString();
+      const remapProperty = (value: Page["properties"][string], mapping: Map<string,string>): Page["properties"][string] =>
+        typeof value === "string" ? mapping.get(value) ?? (value.startsWith("attachment:") ? `attachment:${mapping.get(value.slice(11)) ?? value.slice(11)}` : value) :
+          Array.isArray(value) ? value.map(item => remapProperty(item,mapping) as string) : value;
+      const cloneProperties = (properties: Page["properties"], definition?: DatabaseDefinition): Page["properties"] => {
+        const result = { ...properties };
+        for (const property of definition?.properties ?? []) {
+          const mapping = property.type === "relation" ? ids : property.type === "files" ? attachmentIds : undefined;
+          if (mapping && property.id in result) result[property.id] = remapProperty(result[property.id]!,mapping);
+        }
+        return result;
+      };
+      for (const page of selected.values()) {
+        const record = records.find(record => record.table === "databases" && record.id === page.databaseId);
+        const definition = record ? recordEntity(record) as DatabaseDefinition : undefined;
+        const clone: Page = { ...page, id: ids.get(page.id)!, title: page.id === id ? title ?? `${page.title} copy` : page.title,
+          parentId: ids.get(page.parentId ?? "") ?? page.parentId, databaseId: ids.get(page.databaseId ?? "") ?? page.databaseId,
+          cover: page.cover.startsWith("attachment:") ? remapProperty(page.cover,attachmentIds) as string : page.cover,
+          favorite: false, createdAt: date, updatedAt: date, deletedAt: null,
+          properties: { ...cloneProperties(page.properties,definition), __archived: null, ...(page.id === id ? { __template: false } : {}) } };
+        await this.write("pages",clone.id,clone as unknown as Record<string,unknown>,true);
+        if (page.id === id) result = clone;
+      }
+      for (const page of selected.values()) {
+        const definition = records.find(record => record.table === "databases" && record.id === page.id);
+        if (definition) {
+          const database = recordEntity(definition) as DatabaseDefinition;
+          await this.saveDatabase({ ...database, id: ids.get(page.id)!, createdAt: date, updatedAt: date,
+            ...(database.defaultProperties ? { defaultProperties: cloneProperties(database.defaultProperties,database) } : {}),
+            properties: database.properties.map(property => ({ ...property, ...(property.relationDatabaseId && ids.has(property.relationDatabaseId) ? { relationDatabaseId: ids.get(property.relationDatabaseId)! } : {}) })) });
+        }
+        const update = documents.get(page.id);
+        if (update) await this.saveDoc(ids.get(page.id)!, remapDocumentAttachments(update,attachmentIds,encryption));
+      }
+      for (const file of attachments) await this.saveAttachmentBytes(ids.get(file.pageId)!,encryption.get(file.id)?.bytes ?? file.bytes,file.name,attachmentIds.get(file.id)!,file.mime);
+      if (user !== this.user) throw new Error("Workspace account changed");
+    });
+    await this.refresh();
+    return result;
   }
   /** One transaction validates all roots before removing any page or queued bytes. */
   async purgePages(ids: string[], transport?: SyncTransport): Promise<number> {
@@ -786,6 +1088,7 @@ export class WorkspaceStore {
     });
   }
   async saveDatabase(database: DatabaseDefinition): Promise<void> {
+    if (database.userId !== this.user) throw new Error("Rejected database owner");
     const old = this.list<DatabaseDefinition>("databases", true).some(
       (item) => item.id === database.id,
     );
@@ -795,6 +1098,47 @@ export class WorkspaceStore {
       { ...database, userId: this.user, updatedAt: new Date().toISOString() },
       !old,
     );
+  }
+  async createDatabase(
+    title: string,
+    definition: Pick<DatabaseDefinition,"properties"|"views"|"defaultProperties">,
+    extras: Partial<Page> = {},
+  ): Promise<Page> {
+    let page!: Page;
+    const user = this.user;
+    await this.db.transaction("rw", [this.entities,this.outbox,this.meta], async () => {
+      if (user !== this.user) throw new Error("Workspace account changed");
+      page = await this.createPage("database",title,extras);
+      await this.saveDatabase({ ...definition,id:page.id,userId:this.user,createdAt:page.createdAt,updatedAt:page.updatedAt,deletedAt:null });
+      if (user !== this.user) throw new Error("Workspace account changed");
+    });
+    await this.refresh();
+    return page;
+  }
+  async patchDatabaseView(databaseId: string, viewId: string, patch: Partial<DatabaseView>): Promise<void> {
+    if (!viewId || (patch.id !== undefined && patch.id !== viewId)) throw new Error("Invalid view identity");
+    const prefix = `views.${encodeURIComponent(viewId).replaceAll(".", "%2E")}.`;
+    const fields: Record<string,unknown> = { [`${prefix}deleted`]:false,updatedAt:new Date().toISOString() };
+    for (const [name,value] of Object.entries(patch)) {
+      if (name === "id") continue;
+      if (!VIEW_ATTRIBUTES.has(name) || name === "deleted") throw new Error("Invalid view field");
+      fields[`${prefix}${name}`] = value ?? null;
+    }
+    const user = this.user;
+    await this.db.transaction("rw",[this.entities,this.outbox,this.meta],async () => {
+      const record = await this.entities.get([user,"databases",databaseId]);
+      if (!record) throw new Error("Database no longer exists");
+      const database = recordEntity(record) as DatabaseDefinition;
+      if (!database.views.some(view => view.id === viewId) && (typeof patch.name !== "string" || !patch.type)) throw new Error("View no longer exists");
+      if (user !== this.user) throw new Error("Workspace account changed");
+      await this.write("databases",databaseId,fields);
+      if (user !== this.user) throw new Error("Workspace account changed");
+    });
+    await this.refresh();
+  }
+  async deleteDatabaseView(databaseId: string, viewId: string): Promise<void> {
+    if (!viewId) throw new Error("Invalid view identity");
+    await this.write("databases",databaseId,{ [`views.${encodeURIComponent(viewId).replaceAll(".", "%2E")}.deleted`]:true,updatedAt:new Date().toISOString() });
   }
   async loadDoc(pageId: string): Promise<Uint8Array | null> {
     const page = await this.entities.get([this.user, "pages", pageId]);

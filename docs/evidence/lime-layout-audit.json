@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T02:34:08.903Z",
+  "generatedAt": "2026-10-18T13:31:16.361Z",
   "passed": true,
   "expectedProfiles": 34,
   "screenshots": "test-results/layout-audit-*/",
@@ -15,7 +15,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            16,
             16
           ],
           "monthRowHeights": [],
@@ -33,7 +32,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            16,
             16
           ],
           "monthRowHeights": [],
@@ -141,6 +139,7 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
+            16,
             16,
             16
           ],
@@ -317,7 +316,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            16,
             16
           ],
           "monthRowHeights": [],
@@ -335,7 +333,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            16,
             16
           ],
           "monthRowHeights": [],
@@ -443,6 +440,7 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
+            16,
             16,
             16
           ],
@@ -619,7 +617,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            16,
             16
           ],
           "monthRowHeights": [],
@@ -637,7 +634,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            16,
             16
           ],
           "monthRowHeights": [],
@@ -922,7 +918,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            16,
             16
           ],
           "monthRowHeights": [],
@@ -940,7 +935,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            16,
             16
           ],
           "monthRowHeights": [],
@@ -1225,7 +1219,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
             96
           ],
           "monthRowHeights": [],
@@ -1243,7 +1236,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
             96
           ],
           "monthRowHeights": [],
@@ -1355,8 +1347,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
-            96
+            128,
+            128
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -1373,8 +1365,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
-            96
+            128,
+            128
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -1531,7 +1523,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
             96
           ],
           "monthRowHeights": [],
@@ -1549,7 +1540,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
             96
           ],
           "monthRowHeights": [],
@@ -1661,8 +1651,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
-            96
+            128,
+            128
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -1679,8 +1669,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
-            96
+            128,
+            128
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -1837,7 +1827,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
             96
           ],
           "monthRowHeights": [],
@@ -1856,14 +1845,13 @@
           "truncation": 0,
           "leftEdges": [
             96,
-            96,
             96
           ],
           "monthRowHeights": [],
           "monthBottom": null,
           "paneBottom": 1180,
           "cardHeights": [
-            186
+            172
           ],
           "dockBottom": null,
           "viewportHeight": 1180
@@ -1881,11 +1869,11 @@
             96
           ],
           "monthRowHeights": [
-            168,
-            168,
-            168,
-            168,
-            168
+            168.796875,
+            168.796875,
+            168.796875,
+            168.796875,
+            168.8125
           ],
           "monthBottom": 1156,
           "paneBottom": 1180,
@@ -1970,9 +1958,9 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
-            96,
-            96
+            128,
+            128,
+            128
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -1989,8 +1977,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
-            96
+            128,
+            128
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -2147,7 +2135,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
             96
           ],
           "monthRowHeights": [],
@@ -2166,14 +2153,13 @@
           "truncation": 0,
           "leftEdges": [
             96,
-            96,
             96
           ],
           "monthRowHeights": [],
           "monthBottom": null,
           "paneBottom": 1180,
           "cardHeights": [
-            186
+            172
           ],
           "dockBottom": null,
           "viewportHeight": 1180
@@ -2191,11 +2177,11 @@
             96
           ],
           "monthRowHeights": [
-            168,
-            168,
-            168,
-            168,
-            168
+            168.796875,
+            168.796875,
+            168.796875,
+            168.796875,
+            168.8125
           ],
           "monthBottom": 1156,
           "paneBottom": 1180,
@@ -2280,9 +2266,9 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
-            96,
-            96
+            128,
+            128,
+            128
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -2299,8 +2285,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
-            96
+            128,
+            128
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -2447,6 +2433,622 @@
       ]
     },
     {
+      "profile": "layout-ipad-landscape-light",
+      "screens": [
+        {
+          "screen": "today-empty",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [
+            264
+          ],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "today-populated",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [
+            264,
+            264
+          ],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [
+            172
+          ],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "calendar-month",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [
+            264,
+            264,
+            264
+          ],
+          "monthRowHeights": [
+            96.796875,
+            96.796875,
+            96.796875,
+            96.796875,
+            96.796875
+          ],
+          "monthBottom": 796,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "calendar-week",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [
+            264,
+            264
+          ],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "calendar-day",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [
+            264,
+            264
+          ],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "calendar-agenda",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [
+            264,
+            264
+          ],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "projects-overview",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "project-table",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [
+            296,
+            296,
+            296
+          ],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "project-board",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [
+            296,
+            296
+          ],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "notes",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "note-detail",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "journal",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "journal-entry",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "search",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "trash",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "settings",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "sign-in",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "email-code",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        }
+      ]
+    },
+    {
+      "profile": "layout-ipad-landscape-dark",
+      "screens": [
+        {
+          "screen": "today-empty",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [
+            264
+          ],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "today-populated",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [
+            264,
+            264
+          ],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [
+            172
+          ],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "calendar-month",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [
+            264,
+            264,
+            264
+          ],
+          "monthRowHeights": [
+            96.796875,
+            96.796875,
+            96.796875,
+            96.796875,
+            96.796875
+          ],
+          "monthBottom": 796,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "calendar-week",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [
+            264,
+            264
+          ],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "calendar-day",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [
+            264,
+            264
+          ],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "calendar-agenda",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [
+            264,
+            264
+          ],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "projects-overview",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "project-table",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [
+            296,
+            296,
+            296
+          ],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "project-board",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [
+            296,
+            296
+          ],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "notes",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "note-detail",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "journal",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "journal-entry",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "search",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "trash",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "settings",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "sign-in",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        },
+        {
+          "screen": "email-code",
+          "overflow": false,
+          "smallTargets": 0,
+          "overlaps": 0,
+          "escaping": 0,
+          "truncation": 0,
+          "leftEdges": [],
+          "monthRowHeights": [],
+          "monthBottom": null,
+          "paneBottom": 820,
+          "cardHeights": [],
+          "dockBottom": null,
+          "viewportHeight": 820
+        }
+      ]
+    },
+    {
       "profile": "layout-ipad-split-narrow-light",
       "screens": [
         {
@@ -2457,7 +3059,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            16,
             16
           ],
           "monthRowHeights": [],
@@ -2475,7 +3076,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            16,
             16
           ],
           "monthRowHeights": [],
@@ -2760,7 +3360,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            16,
             16
           ],
           "monthRowHeights": [],
@@ -2778,7 +3377,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            16,
             16
           ],
           "monthRowHeights": [],
@@ -3063,7 +3661,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            16,
             16
           ],
           "monthRowHeights": [],
@@ -3081,7 +3678,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            16,
             16
           ],
           "monthRowHeights": [],
@@ -3366,7 +3962,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            16,
             16
           ],
           "monthRowHeights": [],
@@ -3384,7 +3979,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            16,
             16
           ],
           "monthRowHeights": [],
@@ -3669,7 +4263,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
             96
           ],
           "monthRowHeights": [],
@@ -3687,7 +4280,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
             96
           ],
           "monthRowHeights": [],
@@ -3799,9 +4391,9 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
-            96,
-            96
+            128,
+            128,
+            128
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -3818,8 +4410,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
-            96
+            128,
+            128
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -3976,7 +4568,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
             96
           ],
           "monthRowHeights": [],
@@ -3994,7 +4585,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
             96
           ],
           "monthRowHeights": [],
@@ -4106,9 +4696,9 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
-            96,
-            96
+            128,
+            128,
+            128
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -4125,8 +4715,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
-            96
+            128,
+            128
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -4283,8 +4873,7 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            286.078125,
-            286.078125
+            332
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -4301,15 +4890,14 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            286.078125,
-            286.078125,
-            286.078125
+            332,
+            332
           ],
           "monthRowHeights": [],
           "monthBottom": null,
           "paneBottom": 864,
           "cardHeights": [
-            186
+            172
           ],
           "dockBottom": null,
           "viewportHeight": 864
@@ -4322,16 +4910,16 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            332,
+            332,
+            332
           ],
           "monthRowHeights": [
-            104.796875,
-            104.796875,
-            104.796875,
-            104.796875,
-            104.8125
+            105.59375,
+            105.59375,
+            105.609375,
+            105.59375,
+            105.59375
           ],
           "monthBottom": 840,
           "paneBottom": 864,
@@ -4347,8 +4935,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            332,
+            332
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -4365,8 +4953,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            332,
+            332
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -4383,8 +4971,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            332,
+            332
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -4416,9 +5004,9 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            296,
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -4435,8 +5023,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -4593,8 +5181,7 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            286.078125,
-            286.078125
+            332
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -4611,15 +5198,14 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            286.078125,
-            286.078125,
-            286.078125
+            332,
+            332
           ],
           "monthRowHeights": [],
           "monthBottom": null,
           "paneBottom": 864,
           "cardHeights": [
-            186
+            172
           ],
           "dockBottom": null,
           "viewportHeight": 864
@@ -4632,16 +5218,16 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            332,
+            332,
+            332
           ],
           "monthRowHeights": [
-            104.796875,
-            104.796875,
-            104.796875,
-            104.796875,
-            104.8125
+            105.59375,
+            105.59375,
+            105.609375,
+            105.59375,
+            105.59375
           ],
           "monthBottom": 840,
           "paneBottom": 864,
@@ -4657,8 +5243,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            332,
+            332
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -4675,8 +5261,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            332,
+            332
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -4693,8 +5279,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            332,
+            332
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -4726,9 +5312,9 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            296,
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -4745,8 +5331,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -4903,8 +5489,7 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            388,
-            388
+            524
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -4921,15 +5506,14 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            388,
-            388,
-            388
+            524,
+            524
           ],
           "monthRowHeights": [],
           "monthBottom": null,
           "paneBottom": 1080,
           "cardHeights": [
-            186
+            172
           ],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -4942,16 +5526,16 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            524,
+            524,
+            524
           ],
           "monthRowHeights": [
-            148,
-            148,
-            148,
-            148,
-            148
+            148.796875,
+            148.796875,
+            148.796875,
+            148.796875,
+            148.8125
           ],
           "monthBottom": 1056,
           "paneBottom": 1080,
@@ -4967,8 +5551,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            524,
+            524
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -4985,8 +5569,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            524,
+            524
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -5003,8 +5587,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            524,
+            524
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -5036,9 +5620,9 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            296,
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -5055,8 +5639,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -5213,8 +5797,7 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            388,
-            388
+            524
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -5231,15 +5814,14 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            388,
-            388,
-            388
+            524,
+            524
           ],
           "monthRowHeights": [],
           "monthBottom": null,
           "paneBottom": 1080,
           "cardHeights": [
-            186
+            172
           ],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5252,16 +5834,16 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            524,
+            524,
+            524
           ],
           "monthRowHeights": [
-            148,
-            148,
-            148,
-            148,
-            148
+            148.796875,
+            148.796875,
+            148.796875,
+            148.796875,
+            148.8125
           ],
           "monthBottom": 1056,
           "paneBottom": 1080,
@@ -5277,8 +5859,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            524,
+            524
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -5295,8 +5877,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            524,
+            524
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -5313,8 +5895,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            524,
+            524
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -5346,9 +5928,9 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            296,
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -5365,8 +5947,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -5523,12 +6105,11 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            388,
-            388
+            524.2000122070312
           ],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5541,15 +6122,14 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            388,
-            388,
-            388
+            524.2000122070312,
+            524.2000122070312
           ],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [
-            186
+            171.8333282470703
           ],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5562,19 +6142,19 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            524.2000122070312,
+            524.2000122070312,
+            524.2000122070312
           ],
           "monthRowHeights": [
-            148,
-            148,
-            148,
-            148,
-            148
+            148.8000030517578,
+            148.8000030517578,
+            148.8000030517578,
+            148.8000030517578,
+            148.79998779296875
           ],
-          "monthBottom": 1056,
-          "paneBottom": 1080,
+          "monthBottom": 1055.8333129882812,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5587,12 +6167,12 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            524.2000122070312,
+            524.2000122070312
           ],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5605,12 +6185,12 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            524.2000122070312,
+            524.2000122070312
           ],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5623,12 +6203,12 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            524.2000122070312,
+            524.2000122070312
           ],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5643,7 +6223,7 @@
           "leftEdges": [],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5656,13 +6236,13 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            296,
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5675,12 +6255,12 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5695,7 +6275,7 @@
           "leftEdges": [],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5710,7 +6290,7 @@
           "leftEdges": [],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5725,7 +6305,7 @@
           "leftEdges": [],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5740,7 +6320,7 @@
           "leftEdges": [],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5755,7 +6335,7 @@
           "leftEdges": [],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5770,7 +6350,7 @@
           "leftEdges": [],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5785,7 +6365,7 @@
           "leftEdges": [],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5800,7 +6380,7 @@
           "leftEdges": [],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5815,7 +6395,7 @@
           "leftEdges": [],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5833,12 +6413,11 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            388,
-            388
+            524.2000122070312
           ],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5851,15 +6430,14 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            388,
-            388,
-            388
+            524.2000122070312,
+            524.2000122070312
           ],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [
-            186
+            171.8333282470703
           ],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5872,19 +6450,19 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            524.2000122070312,
+            524.2000122070312,
+            524.2000122070312
           ],
           "monthRowHeights": [
-            148,
-            148,
-            148,
-            148,
-            148
+            148.8000030517578,
+            148.8000030517578,
+            148.8000030517578,
+            148.8000030517578,
+            148.79998779296875
           ],
-          "monthBottom": 1056,
-          "paneBottom": 1080,
+          "monthBottom": 1055.8333129882812,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5897,12 +6475,12 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            524.2000122070312,
+            524.2000122070312
           ],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5915,12 +6493,12 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            524.2000122070312,
+            524.2000122070312
           ],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5933,12 +6511,12 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            524.2000122070312,
+            524.2000122070312
           ],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5953,7 +6531,7 @@
           "leftEdges": [],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5966,13 +6544,13 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            296,
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -5985,12 +6563,12 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -6005,7 +6583,7 @@
           "leftEdges": [],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -6020,7 +6598,7 @@
           "leftEdges": [],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -6035,7 +6613,7 @@
           "leftEdges": [],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -6050,7 +6628,7 @@
           "leftEdges": [],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -6065,7 +6643,7 @@
           "leftEdges": [],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -6080,7 +6658,7 @@
           "leftEdges": [],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -6095,7 +6673,7 @@
           "leftEdges": [],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -6110,7 +6688,7 @@
           "leftEdges": [],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -6125,7 +6703,7 @@
           "leftEdges": [],
           "monthRowHeights": [],
           "monthBottom": null,
-          "paneBottom": 1080,
+          "paneBottom": 1079.8333740234375,
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -6143,8 +6721,7 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            708,
-            708
+            844
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -6161,15 +6738,14 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            708,
-            708,
-            708
+            844,
+            844
           ],
           "monthRowHeights": [],
           "monthBottom": null,
           "paneBottom": 1440,
           "cardHeights": [
-            186
+            172
           ],
           "dockBottom": null,
           "viewportHeight": 1440
@@ -6182,16 +6758,16 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            844,
+            844,
+            844
           ],
           "monthRowHeights": [
-            220,
-            220,
-            220,
-            220,
-            220
+            220.796875,
+            220.796875,
+            220.796875,
+            220.796875,
+            220.8125
           ],
           "monthBottom": 1416,
           "paneBottom": 1440,
@@ -6207,8 +6783,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            844,
+            844
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -6225,8 +6801,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            844,
+            844
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -6243,8 +6819,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            844,
+            844
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -6276,9 +6852,9 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            296,
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -6295,8 +6871,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -6453,8 +7029,7 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            708,
-            708
+            844
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -6471,15 +7046,14 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            708,
-            708,
-            708
+            844,
+            844
           ],
           "monthRowHeights": [],
           "monthBottom": null,
           "paneBottom": 1440,
           "cardHeights": [
-            186
+            172
           ],
           "dockBottom": null,
           "viewportHeight": 1440
@@ -6492,16 +7066,16 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            844,
+            844,
+            844
           ],
           "monthRowHeights": [
-            220,
-            220,
-            220,
-            220,
-            220
+            220.796875,
+            220.796875,
+            220.796875,
+            220.796875,
+            220.8125
           ],
           "monthBottom": 1416,
           "paneBottom": 1440,
@@ -6517,8 +7091,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            844,
+            844
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -6535,8 +7109,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            844,
+            844
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -6553,8 +7127,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            844,
+            844
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -6586,9 +7160,9 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            296,
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -6605,8 +7179,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -6763,8 +7337,7 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            280.96875,
-            280.96875
+            264
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -6781,15 +7354,14 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            280.96875,
-            280.96875,
-            280.96875
+            264,
+            264
           ],
           "monthRowHeights": [],
           "monthBottom": null,
           "paneBottom": 768,
           "cardHeights": [
-            186
+            172
           ],
           "dockBottom": null,
           "viewportHeight": 768
@@ -6896,9 +7468,9 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            296,
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -6915,8 +7487,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -7073,8 +7645,7 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            280.96875,
-            280.96875
+            264
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -7091,15 +7662,14 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            280.96875,
-            280.96875,
-            280.96875
+            264,
+            264
           ],
           "monthRowHeights": [],
           "monthBottom": null,
           "paneBottom": 768,
           "cardHeights": [
-            186
+            172
           ],
           "dockBottom": null,
           "viewportHeight": 768
@@ -7206,9 +7776,9 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            296,
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -7225,8 +7795,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -7383,7 +7953,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
             96
           ],
           "monthRowHeights": [],
@@ -7401,7 +7970,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
             96
           ],
           "monthRowHeights": [],
@@ -7513,9 +8081,9 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
-            96,
-            96
+            128,
+            128,
+            128
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -7532,8 +8100,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
-            96
+            128,
+            128
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -7690,7 +8258,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
             96
           ],
           "monthRowHeights": [],
@@ -7708,7 +8275,6 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
             96
           ],
           "monthRowHeights": [],
@@ -7820,9 +8386,9 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
-            96,
-            96
+            128,
+            128,
+            128
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -7839,8 +8405,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            96,
-            96
+            128,
+            128
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -7997,8 +8563,7 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            278.390625,
-            278.390625
+            264
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -8015,15 +8580,14 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            278.390625,
-            278.390625,
-            278.390625
+            264,
+            264
           ],
           "monthRowHeights": [],
           "monthBottom": null,
           "paneBottom": 720,
           "cardHeights": [
-            186
+            172
           ],
           "dockBottom": null,
           "viewportHeight": 720
@@ -8130,9 +8694,9 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            296,
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -8149,8 +8713,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -8307,8 +8871,7 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            278.390625,
-            278.390625
+            264
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -8325,15 +8888,14 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            278.390625,
-            278.390625,
-            278.390625
+            264,
+            264
           ],
           "monthRowHeights": [],
           "monthBottom": null,
           "paneBottom": 720,
           "cardHeights": [
-            186
+            172
           ],
           "dockBottom": null,
           "viewportHeight": 720
@@ -8440,9 +9002,9 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            296,
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -8459,8 +9021,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -8617,8 +9179,7 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            418,
-            418
+            554
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -8635,15 +9196,14 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            418,
-            418,
-            418
+            554,
+            554
           ],
           "monthRowHeights": [],
           "monthBottom": null,
           "paneBottom": 1080,
           "cardHeights": [
-            186
+            172
           ],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -8656,16 +9216,16 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            554,
+            554,
+            554
           ],
           "monthRowHeights": [
-            148,
-            148,
-            148,
-            148,
-            148
+            148.796875,
+            148.796875,
+            148.796875,
+            148.796875,
+            148.8125
           ],
           "monthBottom": 1056,
           "paneBottom": 1080,
@@ -8681,8 +9241,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            554,
+            554
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -8699,8 +9259,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            554,
+            554
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -8717,8 +9277,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            554,
+            554
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -8750,9 +9310,9 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            296,
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -8769,8 +9329,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -8927,8 +9487,7 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            418,
-            418
+            554
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -8945,15 +9504,14 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            418,
-            418,
-            418
+            554,
+            554
           ],
           "monthRowHeights": [],
           "monthBottom": null,
           "paneBottom": 1080,
           "cardHeights": [
-            186
+            172
           ],
           "dockBottom": null,
           "viewportHeight": 1080
@@ -8966,16 +9524,16 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            554,
+            554,
+            554
           ],
           "monthRowHeights": [
-            148,
-            148,
-            148,
-            148,
-            148
+            148.796875,
+            148.796875,
+            148.796875,
+            148.796875,
+            148.8125
           ],
           "monthBottom": 1056,
           "paneBottom": 1080,
@@ -8991,8 +9549,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            554,
+            554
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -9009,8 +9567,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            554,
+            554
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -9027,8 +9585,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            554,
+            554
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -9060,9 +9618,9 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            296,
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -9079,8 +9637,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -9237,8 +9795,7 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            418,
-            418
+            554
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -9255,15 +9812,14 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            418,
-            418,
-            418
+            554,
+            554
           ],
           "monthRowHeights": [],
           "monthBottom": null,
           "paneBottom": 1200,
           "cardHeights": [
-            186
+            172
           ],
           "dockBottom": null,
           "viewportHeight": 1200
@@ -9276,16 +9832,16 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            554,
+            554,
+            554
           ],
           "monthRowHeights": [
-            172,
-            172,
-            172,
-            172,
-            172
+            172.796875,
+            172.796875,
+            172.796875,
+            172.796875,
+            172.8125
           ],
           "monthBottom": 1176,
           "paneBottom": 1200,
@@ -9301,8 +9857,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            554,
+            554
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -9319,8 +9875,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            554,
+            554
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -9337,8 +9893,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            554,
+            554
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -9370,9 +9926,9 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            296,
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -9389,8 +9945,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -9547,8 +10103,7 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            418,
-            418
+            554
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -9565,15 +10120,14 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            418,
-            418,
-            418
+            554,
+            554
           ],
           "monthRowHeights": [],
           "monthBottom": null,
           "paneBottom": 1200,
           "cardHeights": [
-            186
+            172
           ],
           "dockBottom": null,
           "viewportHeight": 1200
@@ -9586,16 +10140,16 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            554,
+            554,
+            554
           ],
           "monthRowHeights": [
-            172,
-            172,
-            172,
-            172,
-            172
+            172.796875,
+            172.796875,
+            172.796875,
+            172.796875,
+            172.8125
           ],
           "monthBottom": 1176,
           "paneBottom": 1200,
@@ -9611,8 +10165,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            554,
+            554
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -9629,8 +10183,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            554,
+            554
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -9647,8 +10201,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            554,
+            554
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -9680,9 +10234,9 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264,
-            264
+            296,
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -9699,8 +10253,8 @@
           "escaping": 0,
           "truncation": 0,
           "leftEdges": [
-            264,
-            264
+            296,
+            296
           ],
           "monthRowHeights": [],
           "monthBottom": null,
@@ -9843,636 +10397,8 @@
           "cardHeights": [],
           "dockBottom": null,
           "viewportHeight": 1200
-        }
-      ]
-    },
-    {
-      "profile": "layout-ipad-landscape-light",
-      "screens": [
-        {
-          "screen": "today-empty",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [
-            275.390625,
-            275.390625
-          ],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "today-populated",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [
-            275.390625,
-            275.390625,
-            275.390625
-          ],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [
-            186
-          ],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "calendar-month",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [
-            264,
-            264,
-            264
-          ],
-          "monthRowHeights": [
-            96,
-            96,
-            96,
-            96,
-            96
-          ],
-          "monthBottom": 796,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "calendar-week",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [
-            264,
-            264
-          ],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "calendar-day",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [
-            264,
-            264
-          ],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "calendar-agenda",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [
-            264,
-            264
-          ],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "projects-overview",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "project-table",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [
-            264,
-            264,
-            264
-          ],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "project-board",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [
-            264,
-            264
-          ],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "notes",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "note-detail",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "journal",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "journal-entry",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "search",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "trash",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "settings",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "sign-in",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "email-code",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        }
-      ]
-    },
-    {
-      "profile": "layout-ipad-landscape-dark",
-      "screens": [
-        {
-          "screen": "today-empty",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [
-            275.390625,
-            275.390625
-          ],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "today-populated",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [
-            275.390625,
-            275.390625,
-            275.390625
-          ],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [
-            186
-          ],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "calendar-month",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [
-            264,
-            264,
-            264
-          ],
-          "monthRowHeights": [
-            96,
-            96,
-            96,
-            96,
-            96
-          ],
-          "monthBottom": 796,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "calendar-week",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [
-            264,
-            264
-          ],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "calendar-day",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [
-            264,
-            264
-          ],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "calendar-agenda",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [
-            264,
-            264
-          ],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "projects-overview",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "project-table",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [
-            264,
-            264,
-            264
-          ],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "project-board",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [
-            264,
-            264
-          ],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "notes",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "note-detail",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "journal",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "journal-entry",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "search",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "trash",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "settings",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "sign-in",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
-        },
-        {
-          "screen": "email-code",
-          "overflow": false,
-          "smallTargets": 0,
-          "overlaps": 0,
-          "escaping": 0,
-          "truncation": 0,
-          "leftEdges": [],
-          "monthRowHeights": [],
-          "monthBottom": null,
-          "paneBottom": 820,
-          "cardHeights": [],
-          "dockBottom": null,
-          "viewportHeight": 820
         }
       ]
     }
-  ],
-  "reruns": {
-    "profiles": [
-      "layout-ipad-landscape-light",
-      "layout-ipad-landscape-dark"
-    ],
-    "reason": "The full local run passed 32 profiles; these two exceeded their time limit while other browser suites ran concurrently. Both passed an isolated run using independently owned preview servers.",
-    "passed": 2
-  }
+  ]
 }

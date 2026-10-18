@@ -3,7 +3,6 @@ import { platform } from "@veloradesk/core/platform";
 const keys = [
   "velora-theme",
   "velora-accent",
-  "velora-text-size",
   "velora-density",
   "velora-reduce-motion",
 ];
@@ -47,18 +46,14 @@ export function startAppearance(): () => void {
             ? "dark"
             : "light";
     document.documentElement.dataset.theme = theme;
-    if (!read("velora-lime-migrated-v1")) {
-      if (read("velora-accent") === "blue") write("velora-accent", "lime");
-      write("velora-lime-migrated-v1", "true");
-    }
-    document.documentElement.dataset.accent = read("velora-accent") ?? "lime";
+    document.documentElement.dataset.accent = read("velora-accent") ?? "blue";
     document.documentElement.dataset.reduceMotion =
       read("velora-reduce-motion") ?? "false";
     document.documentElement.dataset.density =
       read("velora-density") ?? "comfortable";
     document.documentElement.style.setProperty(
       "--text-body",
-      `${Math.max(15, Math.min(24, Number(read("velora-text-size")) || 15))}px`,
+      "16px",
     );
     void platform.applyTheme(theme).catch(() => {});
   };
@@ -67,16 +62,6 @@ export function startAppearance(): () => void {
     const values = await Promise.all(
       keys.map((key) => store.getSetting<string | null>(key, null)),
     );
-    if (stopped || owner !== store.accountId) return;
-    if (!await store.getSetting("velora-lime-migrated-v1", false)) {
-      if (stopped || owner !== store.accountId) return;
-      if (values[1] === "blue") {
-        values[1] = "lime";
-        await store.setSetting("velora-accent", "lime");
-      }
-      if (stopped || owner !== store.accountId) return;
-      await store.setSetting("velora-lime-migrated-v1", true);
-    }
     if (stopped || owner !== store.accountId) return;
     let changed = false;
     for (const [index, key] of keys.entries()) {

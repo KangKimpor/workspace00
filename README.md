@@ -22,6 +22,9 @@ pnpm hooks:install
 pnpm dev
 ```
 
+Run `pnpm clean` to remove generated builds, test reports, screenshots and caches.
+Dependencies, visual baselines, local databases and private backups are preserved.
+
 Production requires `VITE_SUPABASE_URL` and a publishable key. An unconfigured
 build is reserved for development and fixture tests. `KIMPOR_CLOUD_READY=false`
 is a development/test deployment flag and has no interface control.

@@ -4,7 +4,7 @@ import { readFile } from "node:fs/promises";
 const { zipSync, strToU8, unzipSync, strFromU8 } = createRequire(new URL("../packages/core/package.json", import.meta.url))("fflate");
 test.setTimeout(90_000);
 
-test("sidebar collapse and phone back gestures retain pending edits; phone sheets resize by keyboard", async ({ page }) => {
+test("sidebar collapse and phone back gestures retain pending edits; phone settings drill in and back", async ({ page }) => {
   const phone = page.viewportSize()!.width < 600;
   await page.goto("/");
   const nav = page.getByRole("navigation", { name: phone ? "Bottom navigation" : "Main navigation", exact: true });
@@ -39,13 +39,12 @@ test("sidebar collapse and phone back gestures retain pending edits; phone sheet
     await page.locator(".ws-detail-back").click();
     await page.getByRole("button", { name: "Open sidebar", exact: true }).click();
     await page.getByRole("button", { name: "Settings", exact: true }).click();
-    const handle = page.getByRole("button", { name: "Resize sheet", exact: true });
-    await handle.focus(); await handle.press("Home");
-    const small = (await page.getByRole("dialog").boundingBox())!.height;
-    await expect(handle).toHaveAttribute("aria-expanded", "false");
-    await handle.press("End");
-    await expect(handle).toHaveAttribute("aria-expanded", "true");
-    await expect.poll(async () => (await page.getByRole("dialog").boundingBox())!.height).toBeGreaterThan(small + 100);
+    const settingsPage = page.getByRole("dialog", { name: "Settings", exact: true });
+    await expect(settingsPage).toHaveCSS("height", `${page.viewportSize()!.height}px`);
+    await settingsPage.getByRole("button", { name: "Appearance", exact: true }).click();
+    await expect(settingsPage.getByRole("heading", { name: "Appearance", exact: true })).toBeVisible();
+    await settingsPage.getByRole("button", { name: "Back to settings", exact: true }).click();
+    await expect(settingsPage.getByRole("navigation", { name: "Settings categories" })).toBeVisible();
     await page.getByRole("button", { name: "Close Settings", exact: true }).click();
   }
 });
@@ -61,6 +60,7 @@ test("a Notion ZIP opens nested pages and downloads its actual embedded file", a
   await page.goto("/");
   if (phone) await page.getByRole("button", { name: "Open sidebar", exact: true }).click();
   await page.getByRole("button", { name: "Settings", exact: true }).click();
+  await page.getByRole("dialog", { name: "Settings", exact: true }).getByRole("button", { name: "Import & export", exact: true }).click();
   await page.getByLabel("Import portable files", { exact: true }).setInputFiles({ name: "notion.zip", mimeType: "application/zip", buffer: Buffer.from(zip) });
   await expect(page.getByText("File imported.", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Close Settings", exact: true }).click();
@@ -103,13 +103,15 @@ test("imported timed dates display their stated day without losing the original 
   };
   await settings();
   const zip = zipSync({ "workspace.json": strToU8(JSON.stringify(archive)) });
+  await page.getByRole("dialog", { name: "Settings", exact: true }).getByRole("button", { name: "Import & export", exact: true }).click();
   await page.getByLabel("Import portable files", { exact: true }).setInputFiles({ name: "dated-workspace.zip", mimeType: "application/zip", buffer: Buffer.from(zip) });
   await expect(page.getByText("File imported.", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Close Settings", exact: true }).click();
-  await page.getByRole("tree").getByRole("button", { name: "Imported date database", exact: true }).click();
+  await page.locator(".ws-sidebar-projects").getByRole("button", { name: /Imported date database/ }).click();
   await page.getByRole("tab", { name: "Table", exact: true }).click();
   await expect(page.getByLabel("Due date", { exact: true })).toHaveValue("2026-12-10");
   await settings();
+  await page.getByRole("dialog", { name: "Settings", exact: true }).getByRole("button", { name: "Import & export", exact: true }).click();
   const [download] = await Promise.all([
     page.waitForEvent("download"),
     page.getByRole("button", { name: "Export ZIP", exact: true }).click(),

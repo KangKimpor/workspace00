@@ -133,6 +133,7 @@ test("database rows persist in all five views and journal entries use the same e
   await module(page, "Projects");
   await page.getByRole("button", { name: "New project", exact: true }).click();
   await page.getByRole("dialog", { name: "New project", exact: true }).getByRole("button", { name: "Coursework", exact: true }).click();
+  await page.getByRole("dialog", { name: "New project", exact: true }).getByRole("button", { name: "Create project", exact: true }).click();
   await page.getByRole("textbox", { name: "Page title" }).fill("Reading list");
   await page.getByRole("button", { name: "New task", exact: true }).click();
   await expect(
@@ -176,6 +177,7 @@ test("app lock excludes the workspace and palette until the correct passphrase i
 }) => {
   await page.goto("/");
   await settings(page);
+  await page.getByRole("button", { name: "App lock", exact: true }).click();
   await page
     .getByLabel("App passphrase", { exact: true })
     .fill("Device passphrase 2026");

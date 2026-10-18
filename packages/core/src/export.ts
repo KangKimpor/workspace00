@@ -79,7 +79,7 @@ function markdownNode(node: Y.XmlElement | Y.XmlText | Y.XmlHook, inTable = fals
             const value = markdownNode(child).trim();
             const checked =
               child instanceof Y.XmlElement &&
-              child.getAttribute("checked") === "true";
+              [true, "true"].includes(child.getAttribute("checked") ?? "");
             return `${node.nodeName === "orderedList" ? `${index + 1}.` : node.nodeName === "taskList" ? `- [${checked ? "x" : " "}]` : "-"} ${value.replace(/\n/g, "\n  ")}\n`;
           })
           .join("") + "\n"
@@ -253,7 +253,7 @@ export function markdownToDocument(markdown: string): Uint8Array {
         kind === "taskList" ? "taskItem" : "listItem",
       );
       if (kind === "taskList")
-        child.setAttribute("checked", String(item[3]?.toLowerCase() === "x"));
+        (child as Y.XmlElement<{checked:boolean}>).setAttribute("checked", item[3]?.toLowerCase() === "x");
       const paragraph = new Y.XmlElement("paragraph");
       paragraph.insert(0, [plainInline(item[4] ?? "")]);
       child.insert(0, [paragraph]);
@@ -268,7 +268,7 @@ export function markdownToDocument(markdown: string): Uint8Array {
     const node = new Y.XmlElement(
       heading ? "heading" : line.startsWith("> ") ? "blockquote" : "paragraph",
     );
-    if (heading) node.setAttribute("level", String(heading.level));
+    if (heading) (node as Y.XmlElement<{level:number}>).setAttribute("level", heading.level);
     const text = plainInline(heading?.content ?? line.replace(/^> /, ""));
     if (node.nodeName === "blockquote") {
       const paragraph = new Y.XmlElement("paragraph");

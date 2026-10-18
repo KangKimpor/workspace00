@@ -1,6 +1,18 @@
 # Kimpor Workspace working memory
 
-Updated 2026-10-15. The complete lime redesign brief supersedes the earlier unfinished prompt. Current work is PR #15 on `redesign/lime-workspace`; see `docs/LIME-REDESIGN.md`, `docs/DESIGN-SYSTEM.md` and `docs/VERIFICATION.md`.
+## Current continuation, 18 October 2026
+
+Web work now uses `redesign/notion-workspace` from main `de057ed`. The neutral
+Notion-inspired direction supersedes the lime visual layer; see
+`docs/NOTION-REDESIGN.md` for scope and verification. Pages/Databases phase-one
+data safety changes are retained. Use fixed 16px body text without a text-size
+selector; keep the Today schedule bar removed. Planning used Astra medium;
+remaining implementation uses 6.1 Sol medium. Native apps remain paused.
+No live migration, deployment, main push, merge or visual-baseline approval.
+Draft PR #20 is open. Its six Windows-host Firefox resize failures remain
+enabled; the exact full-run/focused-run evidence is in the delivery report.
+
+Historical context from 2026-10-15 follows. The 18 October continuation above governs current work; the previous lime branch and PR #15 are retained as history.
 
 ## Current continuation, 15 October 2026
 

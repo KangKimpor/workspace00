@@ -52,6 +52,7 @@ try {
       await seedTime(-3000);
       await page.getByRole('button',{name:'New project',exact:true}).click();
       await page.getByRole('dialog',{name:'New project',exact:true}).getByRole('button',{name:'Coursework',exact:true}).click();
+      await page.getByRole('dialog',{name:'New project',exact:true}).getByRole('button',{name:'Create project',exact:true}).click();
       await page.getByRole('textbox',{name:'Page title'}).fill('Projects');
       await expect(page.getByRole('textbox',{name:'Page title'})).toHaveValue('Projects');
       await seedTime(-2000);
@@ -80,8 +81,8 @@ try {
           await navigate(route);
           await expect(page.getByRole('region',{name:'Page detail',exact:true})).toHaveCount(0);
           if(screen==='note-detail'){await page.locator('main').getByRole('button',{name:/A little room for ideas/}).first().click();await page.getByRole('textbox',{name:'Document editor'}).waitFor();await page.getByRole('textbox',{name:'Document editor'}).focus();}
-          if(screen==='database'){await page.locator('main .ws-project-card').filter({hasText:'Projects'}).first().click();await expect(page.locator('.ws-database')).toBeVisible();}
-          if(screen==='settings'){if(!await page.getByRole('button',{name:'Settings',exact:true}).first().isVisible())await page.getByRole('button',{name:'Open sidebar',exact:true}).click();await page.getByRole('button',{name:'Settings',exact:true}).first().click();await page.getByRole('button',{name:'Export ZIP'}).waitFor();}
+          if(screen==='database'){await page.locator('main').getByRole('button',{name:'Open Projects',exact:true}).click();await expect(page.locator('.ws-database')).toBeVisible();}
+          if(screen==='settings'){if(!await page.getByRole('button',{name:'Settings',exact:true}).first().isVisible())await page.getByRole('button',{name:'Open sidebar',exact:true}).click();await page.getByRole('button',{name:'Settings',exact:true}).first().click();await page.getByRole('button',{name:'Import & export',exact:true}).click();await page.getByRole('button',{name:'Export ZIP'}).waitFor();}
           if(screen==='search')await page.getByRole('button',{name:'Search workspace',exact:true}).click();
         }
         await page.waitForFunction(()=>document.fonts.status==='loaded',undefined,{timeout:10000});
@@ -99,7 +100,7 @@ try {
         // Capture the settled compositor paint after the navigation is at rest.
         await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
         // Wait for asynchronous account-cache reads and the final WebKit paint.
-        if(screen==='today')await expect(page.locator('main').getByText('A little time to plan',{exact:true}).first()).toBeVisible();
+        if(screen==='today')await expect(page.locator('.ws-task-today')).toBeVisible();
         if(screen==='calendar'){await expect(page.locator('.cal-month-grid')).toBeVisible();await expect(page.locator('.cal-month-grid .cal-month-event,.cal-month-grid .cal-more,.cal-month-grid .cal-day-dots i').first()).toBeAttached();}
         await page.waitForTimeout(350);
         const file=`docs/screenshots/${screen}-${name}-${theme}.png`;
@@ -111,7 +112,7 @@ try {
           if(unreadable.length) throw new Error(`Dark text lost contrast: ${file}: ${unreadable.join(', ')}`);
         }
         report.push({screen,name,theme,file,width,height,dpr,engine,overflow,capturedAt:new Date().toISOString()});
-        if(screen==='settings'||screen==='search'){await page.keyboard.press('Escape');if(await page.getByRole('button',{name:'Close sidebar',exact:true}).first().isVisible())await page.getByRole('button',{name:'Close sidebar',exact:true}).first().click();}
+        if(screen==='settings'||screen==='search'){if(screen==='settings')await page.getByRole('button',{name:'Close Settings',exact:true}).click();else await page.keyboard.press('Escape');if(await page.getByRole('button',{name:'Close sidebar',exact:true}).first().isVisible())await page.getByRole('button',{name:'Close sidebar',exact:true}).first().click();}
       }
       if (!selectedScreens || selectedScreens.some(screen => screen === 'sign-in' || screen === 'email-code')) {
         const auth = await browsers[engine].newContext({ viewport:{width,height}, deviceScaleFactor:dpr, hasTouch:engine==='webkit', isMobile:engine==='webkit', colorScheme:theme, reducedMotion:'reduce', locale:'en-US', timezoneId:'UTC', serviceWorkers:'block' });
