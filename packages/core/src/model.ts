@@ -67,6 +67,7 @@ export type PropertyType =
   | "url"
   | "email"
   | "phone"
+  | "person"
   | "files"
   | "relation"
   | "rollup";
@@ -94,12 +95,14 @@ export interface DatabaseView {
   filter?: FilterGroup;
   sort?: { property: string; direction: "asc" | "desc" }[];
   groupBy?: string;
+  visibleProperties?: string[];
 }
 export interface DatabaseDefinition {
   id: string;
   userId: string;
   properties: PropertyDefinition[];
   views: DatabaseView[];
+  defaultProperties?: Record<string, PropertyValue>;
   createdAt: string;
   updatedAt: string;
   deletedAt: string | null;
