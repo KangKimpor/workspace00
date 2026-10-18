@@ -64,3 +64,18 @@ test("background notifications resolve without an active service worker", async 
   await expect(dialog.locator("#settings-push-status")).not.toHaveText("Checking notification status…");
   await expect(toggle).toBeDisabled();
 });
+
+test("settings hands off to Calendars on first visit and to Trash", async ({ page }) => {
+  let dialog = await openSettings(page);
+  await dialog.getByRole("button", { name: "Calendars", exact: true }).click();
+  await dialog.getByRole("button", { name: "Open calendar settings", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Connected accounts", exact: true })).toBeVisible();
+  await page.getByRole("button", { name: "Close calendar settings", exact: true }).click();
+  if (page.viewportSize()!.width < 600) await page.getByRole("button", { name: "Open sidebar", exact: true }).click();
+  await page.getByRole("button", { name: "Settings", exact: true }).click();
+  dialog = page.getByRole("dialog", { name: "Settings", exact: true });
+  await dialog.getByRole("button", { name: /^Trash\b/ }).click();
+  await dialog.getByRole("button", { name: "Open Trash", exact: true }).click();
+  await expect(page.getByRole("dialog", { name: "Trash", exact: true })).toBeVisible();
+  await expect(page.getByText("Trash is empty", { exact: true })).toBeVisible();
+});

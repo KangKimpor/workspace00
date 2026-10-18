@@ -112,8 +112,8 @@ function Loading() {
     </div>
   );
 }
-function Empty({ title, action }: { title: string; children: ReactNode; action?: ReactNode; }) {
-  return <div className="ws-empty" aria-label={title}><FileText size={32} />{action ?? <Pressable className="ws-button" onClick={() => document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }))}>Done</Pressable>}</div>;
+function Empty({ title, children, action }: { title: string; children: ReactNode; action?: ReactNode; }) {
+  return <div className="ws-empty" aria-label={title}><FileText size={32} /><h3>{title}</h3><p>{children}</p>{action}</div>;
 }
 function useWindowedRange(
   ref: RefObject<HTMLDivElement | null>,
@@ -1048,7 +1048,7 @@ export default function WorkspaceApp() {
                     title={
                       filter
                         ? "No matching items"
-                        : `Your ${module.toLowerCase()} starts here`
+                        : module === "Notes" ? "Your notes start here" : `Your ${module.toLowerCase()} starts here`
                     }
                     action={<Pressable className="ws-button ws-tinted" onClick={() => filter ? setFilter("") : module === "Projects" ? setProjectOpen(true) : void run(() => create("note"))}>{filter ? "Clear" : module === "Projects" ? "New project" : "New note"}</Pressable>}
                   >

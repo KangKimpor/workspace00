@@ -28,6 +28,19 @@ async function sidebar(page: Page) {
   return page.getByRole("complementary", { name: "Sidebar", exact: true });
 }
 
+test("empty pages and searches explain the next step without an inactive action", async ({ page }) => {
+  await page.goto("/");
+  await navigate(page, "Notes");
+  await expect(page.getByRole("heading", { name: "Your notes start here", exact: true })).toBeVisible();
+  await expect(page.getByText("Ideas, checklists, and everything you want to keep.", { exact: true })).toBeVisible();
+  await page.getByRole("button", { name: "Search workspace", exact: true }).click();
+  const search = page.getByRole("dialog", { name: "Search", exact: true });
+  await search.getByRole("textbox", { name: "Search query", exact: true }).fill("Unfindable-sample-query");
+  await expect(search.getByRole("heading", { name: "Nothing found yet", exact: true })).toBeVisible();
+  await expect(search.getByText("Try another word, type, or date.", { exact: true })).toBeVisible();
+  await expect(search.getByRole("button", { name: "Done", exact: true })).toHaveCount(0);
+});
+
 test("pages persist starter content, nesting, templates, favorites, archive and restore", async ({ page }, testInfo) => {
   await page.goto("/");
   await create(page, "Page", "Planning", async () => { await page.getByRole("combobox", { name: "Template", exact: true }).selectOption("meeting"); });
