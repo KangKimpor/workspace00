@@ -6,6 +6,7 @@ import { Feather, FlaskConical } from "lucide-react";
 import { BrandMark, Pressable } from "@veloradesk/ui";
 import { platform } from "@veloradesk/core/platform";
 const EditorSpike = lazy(() => import("./EditorSpike"));
+const DesignPrimitives = lazy(() => import("./DesignPrimitives"));
 type Theme = "system" | "light" | "dark";
 const sections = [
   { id: "overview", title: "Overview", icon: LayoutGrid },
@@ -439,6 +440,7 @@ export function App() {
                   </div>
                 </section>
                 <section id="controls" className="section">
+                  <Suspense fallback={<p role="status">Loading components…</p>}><DesignPrimitives /></Suspense>
                   <div className="section-heading">
                     <div>
                       <span className="section-number">

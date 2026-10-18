@@ -1,5 +1,48 @@
 # Workspace design system
 
+## Current Notion-inspired web system — 18 October 2026
+
+The web implementation uses neutral surfaces, charcoal text, small corner radii,
+underline view tabs and blue primary actions. Kimpor's original geometric K is
+retained; no Notion logo, illustrations or proprietary assets are shipped.
+System fonts lead the stack and the bundled Noto Sans Khmer fallback remains.
+Body text is fixed at 16px with 1.5 or greater line height. There is no text-size
+selector. Chrome uses the 14px `--text-ui` token; metadata uses caption tokens.
+
+Figma reference `ot3OLEBIHB1IGCcSqg5V11` was read successfully after
+reauthentication: gallery `2:25134`, table `2:25363`, sidebar `2:29199`.
+These embedded app examples guide layout and visual treatment. The kit's
+marketing imagery is reference material only. Settings follows the written
+brief because the file has no matching Settings screen. Accessible colors and
+44px targets take precedence over the reference's denser example controls.
+
+| Primitive | Implementation and behavior |
+|---|---|
+| Button/icon action | Existing `Pressable`, `.ws-button`, `.ws-icon`; primary, quiet, danger and disabled states; visible focus; short ease-out feedback |
+| Input/select/number | `.ws-input` and existing property editors; semantic labels; 16px inputs on phones |
+| Segmented/theme/switch | Settings controls show selected state; theme previews and accent swatches retain accessible names |
+| Menu/popover | `ActionMenu`, keyboard arrows/Home/End/Escape, optional icons/sections/shortcuts/checkmarks, focus return |
+| Modal/sheet | Existing Radix dialogs and extracted `WorkspaceSheet`; trapped focus, safe areas and editor flush before navigation |
+| Tabs | Underline selection, roving focus where applicable; view configuration persists through the existing store |
+| Tag/status | `Tag`, stable NFC-normalized option hash, ten semantic foreground/background pairs; no schema color writes |
+| Property icon | `PropertyTypeIcon`, existing ISC-licensed Lucide library; decorative SVG hidden from screen readers |
+| Breadcrumb | Existing page ancestry, individually accessible navigation actions and phone truncation |
+| Skeleton/empty/banner/toast | Quiet semantic surfaces, text status and retry/actions; no decorative empty-state artwork |
+
+`/design` renders the existing studies plus the workspace primitive gallery.
+Colors exist only in `packages/ui/src/tokens.css`. `notion-surfaces.css` carries
+the shared web skin, with project and Settings layout in their feature folders.
+Controls have actual 44px bounding boxes; pseudo-element hit areas do not
+substitute for the layout audit. Existing phone <600, tablet 600–1023 and desktop
+≥1024 container breakpoints, icon rail, keyboard guards and safe areas remain.
+
+All ten tag foreground/background pairs are checked in both themes by
+`scripts/contrast.mjs`, alongside the original checks (92 total pairs).
+Visual captures are candidates, not approved baselines. Physical-device,
+screen-reader and real IME verification remains separate from local automation.
+
+## Previous lime direction (historical)
+
 The redesign uses `packages/ui/src/tokens.css` as its color, type, spacing and motion source. Urbanist Variable is bundled locally; Noto Sans Khmer Variable remains the Khmer fallback. Legacy storage/package names remain unchanged.
 
 | Role | Light | Dark |
