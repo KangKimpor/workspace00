@@ -39,6 +39,7 @@ test("empty pages and searches explain the next step without an inactive action"
   await expect(search.getByRole("heading", { name: "Nothing found yet", exact: true })).toBeVisible();
   await expect(search.getByText("Try another word, type, or date.", { exact: true })).toBeVisible();
   await expect(search.getByRole("button", { name: "Done", exact: true })).toHaveCount(0);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
 });
 
 test("pages persist starter content, nesting, templates, favorites, archive and restore", async ({ page }, testInfo) => {

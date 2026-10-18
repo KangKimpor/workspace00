@@ -1,5 +1,20 @@
 # Verification ledger
 
+## Neutral web redesign — 18 October 2026
+
+See `NOTION-REDESIGN.md` and `evidence/notion-web-verification.json` for the
+current branch's exact results and limits. `pnpm check` passes 110 unit tests,
+90.7% core line coverage, 237.2 KiB initial JS and 92 contrast pairs. The full
+layout gate passes all 34 profiles / 612 screens, and 510 candidate screenshots
+complete without changing approved baselines. Isolated Lighthouse passes both
+routes at 99 performance / 100 accessibility / 100 best practices, TBT 0 and
+CLS 0. The full browser run is not completely green: 203/212 pass, three cases
+are subsequently verified by a 12-case corrective rerun, and six Firefox
+viewport-resize cases remain blocked on this Windows host. Additional Settings
+handoff and empty-state checks pass 4/4 each. No tests or gates were disabled.
+Native apps, live deployment/migrations and human baseline approval remain
+outside this delivery. Historical results below do not replace this evidence.
+
 ## Lime redesign continuation — 15 October 2026
 
 Owner priority: finalize the **web app first**. Windows 11 EXE implementation,

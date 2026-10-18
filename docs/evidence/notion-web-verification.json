@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-18",
+  "branch": "redesign/notion-workspace",
+  "applicationCommit": "24dd91f",
+  "check": { "passed": true, "unitTests": 110, "coreLineCoveragePercent": 90.7, "initialJsGzipKiB": 237.2, "contrastPairs": 92 },
+  "browserFullRun": { "total": 212, "passed": 203, "failed": 9, "fullyGreen": false },
+  "browserCorrections": { "passed": 12, "failed": 0 },
+  "settingsHandoff": { "passed": 4, "failed": 0 },
+  "emptyStatesFinalBuild": { "passed": 4, "failed": 0 },
+  "remainingBrowserFailures": { "count": 6, "cause": "Firefox setViewportSize timeouts on this Windows host", "testsDisabled": false },
+  "layout": { "passed": true, "profilesAndThemes": 34, "screens": 612, "receipt": "docs/evidence/lime-layout-audit.json" },
+  "screenshots": { "passed": true, "captures": 510, "profiles": 17, "themes": 2, "approvedBaselinesChanged": false },
+  "lighthouse": {
+    "passed": true,
+    "root": { "performance": 99, "accessibility": 100, "bestPractices": 100, "lcpMs": 747.29, "tbtMs": 0, "cls": 0 },
+    "design": { "performance": 99, "accessibility": 100, "bestPractices": 100, "lcpMs": 744.82, "tbtMs": 0, "cls": 0 }
+  },
+  "sql": { "passed": true, "engine": "disposable loopback PostgreSQL 18.4", "migrations": 12, "contracts": ["ownership", "purge", "pages_databases"], "liveMigrationsRun": false },
+  "newRuntimeDependencies": 0,
+  "deployed": false,
+  "physicalDeviceAndScreenReaderAcceptance": false,
+  "visualBaselineApproval": false
+}
