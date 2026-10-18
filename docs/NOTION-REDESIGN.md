@@ -4,6 +4,8 @@ Status: first working phase and redesign implemented and locally verified on
 `redesign/notion-workspace`, based on main `de057ed`. No deployment, live
 migration, main push, merge or visual-baseline approval is authorized here.
 
+Review: [draft PR #20](https://github.com/KangKimpor/kimpor-workspace/pull/20).
+
 ## Scope and decisions
 
 The Pages/Databases first phase and its tested data-safety fixes are retained.
@@ -96,6 +98,8 @@ historical filename is retained for the existing tooling).
 Review also restored visible headings and guidance in the shared empty-state
 component and removed its fallback Done action. The final production build's
 regression passes 4/4 browser projects, including a page-overflow assertion.
+The full layout/capture run preceded that final static empty-state text change;
+the last build and focused regression cover it without replacing baselines.
 
 | Final verification | Result |
 |---|---|

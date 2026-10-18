@@ -9,6 +9,8 @@ data safety changes are retained. Use fixed 16px body text without a text-size
 selector; keep the Today schedule bar removed. Planning used Astra medium;
 remaining implementation uses 6.1 Sol medium. Native apps remain paused.
 No live migration, deployment, main push, merge or visual-baseline approval.
+Draft PR #20 is open. Its six Windows-host Firefox resize failures remain
+enabled; the exact full-run/focused-run evidence is in the delivery report.
 
 Historical context from 2026-10-15 follows. The 18 October continuation above governs current work; the previous lime branch and PR #15 are retained as history.
 
